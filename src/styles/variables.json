@@ -1,0 +1,13 @@
+{
+  "bp-desktop-hd": "1800px",
+  "bp-desktop": "1200px",
+  "bp-tablets": "768px",
+  "bp-phones": "480px",
+  "text-color": "#fff",
+  "hover-color": "#4b6fd7",
+  "social-icons-color": "#6f6964",
+  "form-icons-color": "#6f6964",
+  "controls-icon-color": "#fff",
+  "circle-skill-color": "#363636",
+  "circle-skill-above-color": "#f29400"
+}

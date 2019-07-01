@@ -1,0 +1,54 @@
+.main {
+  margin-bottom: 12.23%;
+  color: $text-color;
+}
+
+.main__site-description {
+  margin-bottom: 22.36%;
+  display: flex;
+  justify-content: center;
+}
+
+.main__info {
+  width: 11.15%;
+  margin-right: 4.13%;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.67;
+  opacity: .4;
+}
+
+.main__title {
+  width: 27.77%;
+  display: flex;
+  align-items: flex-start;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 0.9;
+}
+
+.scroll {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  &:hover .scroll__text {
+    color: $hover-color;
+  }
+  &:hover .scroll__icon {
+   fill: $hover-color;
+  }
+}
+
+.scroll__text {
+  margin-right: 21px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color ease-in-out .5s;
+}
+
+.scroll__icon {
+  width: 19px;
+  height: 30px;
+  fill: $controls-icon-color;
+  transition: fill ease-in-out .5s;
+}

@@ -1,0 +1,151 @@
+.slider {
+  display: flex;
+}
+
+.slider__display {
+  width: 65.88%;
+  margin-right: 160px;
+  position: relative;
+  &::before {
+  content: "2";
+  position: absolute;
+  top: -88px;
+  right: -225px;
+  display: inline;
+  font-size: 400px;
+  font-weight: 800;
+  color: #f0f0f0;
+  opacity: .5;
+  }
+}
+
+.slider__pic {
+  width: 100%;
+  height: 549px;
+}
+
+.slider__img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__control {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 100px;
+  right: -50px;
+  background-color: #2d3c4e;
+}
+
+.slider__control-button {
+  width: 50px;
+  height: 50px;
+  &:hover .slider__control-icon {
+    fill: $hover-color;
+  }
+}
+
+.slider__control-button-next {
+  transform: rotate(180deg)
+}
+
+.slider__control-icon {
+  width: 8px;
+  height: 10px;
+  fill: $controls-icon-color;
+  transition: fill ease-in-out .5s;
+}
+
+.slider__previews-list {
+  display: flex;
+  position: absolute;
+  bottom: 100px;
+  right: 0;
+}
+
+.slider__previews-item {
+  width: 178px;
+  height: 100px;
+}
+
+.slider__previews-img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__previews-item--active {
+  border: solid 3px #f29400;
+}
+
+.slider__desck {
+  position: relative;
+  z-index: 10;
+}
+
+.slider__tags {
+  margin-bottom: 50px;
+  display: flex;
+}
+
+.slider__tag-item {
+  padding: 18px 20px;
+  margin-right: 15px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 25px;
+  color: #3d4143;
+  background-color: #f2f5f9;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.slider__title {
+  width: 204px;
+  margin-bottom: 44px;
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 1.6;
+  color: #2d3c4e;
+}
+
+.slider__text {
+  margin-bottom: 50px;
+}
+
+.slider__text p {
+  width: 337px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.88;
+  color: #2b3948;
+}
+
+.slider__link {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  color: #2d3c4e;
+  &:hover .slider___link-icon {
+    fill: $hover-color;
+  }
+  &:hover .slider__link-text {
+    color: $hover-color;
+  }
+}
+
+.slider___link-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 20px;
+  fill: #2d3c4e;
+  transition: fill ease-in-out .5s;
+}
+
+.slider__link-text {
+  transition: color ease-in-out .5s;
+}
