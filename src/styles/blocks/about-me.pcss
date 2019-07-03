@@ -30,7 +30,7 @@
 
 .about-me__hello {
   margin-bottom: 5.8%;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 .about-me__title {
@@ -39,45 +39,35 @@
 
 .about-me__job {
   margin-bottom: 12.27%;
-  opacity: 0.5;
+  opacity: .5;
 }
 
 .about-me__information-outer {
   justify-self: center;
 }
 
-.about-me__information {
-  display: flex;
-}
-
-.about-me__keys-block, .about-me__propertys-block {
-  display: flex;
-  flex-direction: column;
-}
-
-.about-me__keys-block {
-  margin-right: 79px;
+.about-me__table-cell {
+  vertical-align: top;
 }
 
 .about-me__key {
-  margin-bottom: 25px;
+  padding-right: 100px;
+  padding-bottom: 25px;
   font-weight: 600;
   opacity: .15;
   &:last-child {
-    margin-bottom: 0;
+    padding: 0;
   }
 }
-.about-me__property {
-  margin-bottom: 25px;
-  &:last-child {
-    margin-bottom: 0;
-  }
+
+.about-me__row:last-child .about-me__key {
+  padding: 0;
 }
 
 .about-me__footnote {
   position: relative;
   line-height: 1.88;
-  opacity: 0.5;
+  opacity: .5;
   &:before {
     content: "*";
     position: absolute;
@@ -85,7 +75,7 @@
     left: -60px;
     font-size: 48px;
     font-style: italic;
-    color: #ff0000;
+    color: $footnote-star-color;
     opacity: .7;
   }
 }

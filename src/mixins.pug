@@ -6,10 +6,10 @@ mixin icon(name, className)
 mixin image(path, className, alt)
   img(src=require(`images/${path}`) class=className alt=`${alt}`)
 
-mixin nav(mod)
+mixin nav
   -var items= ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
   -var links= ["main", "about-me", "skills", "projects", "reviews", "contact"]
-  nav(class=`nav ${mod}__nav`)
+  nav.nav
     ul(class=`nav__block`)
       each item, index in items
         li(class=`nav__item`)
@@ -24,19 +24,17 @@ mixin socials(mod)
           +icon(`${item.name}`, 'socials__icon')
 
 mixin table(items)
-  ul.about-me__information
-    li.about-me__keys-block
-      each item in items
-        div.about-me__key= `${item.key}`
-    li.about-me__propertys-block
-      each item in items  
-        div.about-me__property= `${item.property}`
+  table.about-me__information
+    each item in items
+      tr.about-me__row
+        td.about-me__key.about-me__table-cell= `${item.key}`
+        td.about-me__property.about-me__table-cell= `${item.property}`
 
-mixin circleSkill(className, items, titles)
-  ul(class=`${className}`)
+mixin circleSkill(items, titles)
+  ul.my-skills__list
     -for(var i=0; i<items.length; ++i)
-      li(class=`${className}__item`)
-        div(class=`${className}__title`)=`${titles[i]}`
+      li.my-skills__item
+        div.my-skills__list-title=`${titles[i]}`
         svg(class="persentage" viewBox="0 0 100 100" preserveAspectRatio="none")
           defs
             lineargradient#gradient(x1="0%" y1="0%" x2="100%" y2="0%")
@@ -44,22 +42,3 @@ mixin circleSkill(className, items, titles)
               stop(offset="100%" stop-color="#ea7400")
           circle(cx="50" cy="50" r="40" class="circle circle__under")
           circle(cx="50" cy="50" r="40" stroke-dashoffset=`${251 - items[i]*2.51}` class="circle circle__above")
-
-mixin slider(contents, mod)
-  ul(class=`slider__list-${mod}`)
-    -for(var i=0; i<contents.length; ++i)
-      li(class=`slider__item-${mod}` data-index=`${i+1}`)
-        +image(`content/${contents[i]}`, `slider__pic-${mod}`)
-
-mixin reviewsSlider(className, heroesText, heroesAvatar, heroTitle, heroPosition)
-  ul(class=`${className}`)
-    -for(var i=0; i<heroesText.length; ++i)
-      li(class=`${className}__item`)
-        div(class=`${className}__hero-text`)= `${heroesText[i]}`
-        div(class=`${className}__hero-block`)
-          div(class=`${className}__hero-avatar`)
-            +image(`${heroesAvatar[i]}`, `${className}__pic`)
-          div(class=`${className}__hero-text`)
-            div(class=`${className}__hero-title`)= `${heroTitle[i]}`
-            div(class=`${className}__hero-position`)= `${heroPosition[i]}`
-

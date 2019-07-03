@@ -7,21 +7,21 @@ section.reviews
       button(type="button").reviews__next-button.reviews__buttons
         +icon("short-arrow", "reviews__next-icon reviews__icon")
   .reviews__slider-content
-    ul.reviews-list.reviews__list
-      li.reviews-list__item
+    ul.reviews__list
+      li.reviews__item
         p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        div.reviews-list__hero-block
-          div.reviews-list__hero-avatar
-            +image("content/dima.jpg", "reviews-list__img", "user-avatar")
-          div.reviews-list__hero-text
-            h4 Ковальчук Дмитрий
-            p Основатель Loftschool
-      li.reviews-list__item
+        div.reviews__hero-block
+          div.reviews__hero-avatar
+            +image("content/dima.jpg", "reviews-list__img", "аватар пользователя")
+          div.reviews__hero-text
+            h5 Ковальчук Дмитрий
+            div Основатель Loftschool
+      li.reviews__item
         p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        div.reviews-list__hero-block
-          div.reviews-list__hero-avatar
-            +image("content/vova.jpg", "reviews-list__img", "user-avatar")
-          div.reviews-list__hero-text
-            h4 Владимир Сабанцев
-            p Преподаватель
+        div.reviews__hero-block
+          div.reviews__hero-avatar
+            +image("content/vova.jpg", "reviews-list__img", "аватар пользователя")
+          div.reviews__hero-text
+            h5 Владимир Сабанцев
+            div Преподаватель
 

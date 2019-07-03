@@ -7,7 +7,7 @@
   margin-bottom: 6.56%;
 }
 
-.order-form__row {
+.form__row {
   display: flex;
   margin-bottom: 41px;
   &:nth-last-of-type(1) {
@@ -15,41 +15,41 @@
   }
 }
 
-.order-form__label {
+.form__label {
   &:hover {
     border-color: $hover-color;
   }
 }
 
-.order-form__label-name, .order-form__label-email {
+.form__label-name, .form__label-email {
   width: 27.57%;
   display: flex;
   flex-direction: column;
 }
 
-.order-form__label-name {
+.form__label-name {
   margin-right: 51px;
 }
 
-.order-form__label-message {
+.form__label-message {
   width: 58.32%;
 }
 
-.order-form__title {
+.form__label-title {
   margin-left: 46px;
   margin-bottom: 25px;
 }
 
-.order-form__input-block {
+.form__input-block {
   display: flex;
   flex-wrap: wrap;
 }
 
-.order-form__input-block--align {
+.form__input-block--align {
   align-items: top;
 }
 
-.order-form__icon {
+.form__icon {
   width: 30px;
   height: 30px;
   margin-right: 20px;
@@ -57,7 +57,7 @@
   transition: fill ease-in-out .5s;
 }
 
-.order-form__input {
+.form__input {
   width: 80%;
   height: 40px;
   border: none;
@@ -70,26 +70,26 @@
   order: 10;
   &::placeholder {
     width: 50%;
-    color: #fff;
+    color: $placeholder-text-color;
   }
 }
 
-.order-form__input:focus + .order-form__icon {
+.form__input:focus + .form__icon {
   fill: $hover-color;
 }
 
-.order-form__border {
+.form__border {
   width: 100%;
-  border-bottom: 2px solid #898989;
+  border-bottom: 2px solid $form-border-color;
   transition: border-color ease-in-out .5s;
   order: 20;
 }
 
-.order-form__input:focus ~ div.order-form__border {
+.form__input:focus ~ div.form__border {
   border-color: $hover-color;
 }
 
-.order-form__input-message {
+.form__input-message {
   height: 80px;
   overflow: hidden;
   resize: none;
