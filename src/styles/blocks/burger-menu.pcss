@@ -1,8 +1,12 @@
 .burger-menu {
   width: 24px;
   height: 3px;
+  display: none;
   position: relative;
   background-color: $burger-menu;
+  @include tablets {
+    display: block;
+  }
   &::before {
     content: "";
     width: 100%;
