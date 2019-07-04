@@ -1,9 +1,12 @@
 {
   "bp-desktop-hd": "1800px",
   "bp-desktop": "1200px",
+  "bp-laptop": "992px",
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "text-color": "#fff",
+  "paralax-bg": "#1b1f22",
+  "burger-menu": "#fff",
   "placeholder-text-color": "#fff",
   "slider-block-title-text-color": "#2b3948",
   "slider-display-number-text-color": "#f0f0f0",

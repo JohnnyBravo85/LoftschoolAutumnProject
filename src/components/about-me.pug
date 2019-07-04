@@ -1,3 +1,10 @@
+mixin table(items)
+  table.about-me__information
+    each item in items
+      tr.about-me__row
+        td.about-me__key.about-me__table-cell= `${item.key}`
+        td.about-me__property.about-me__table-cell= `${item.property}`
+
 section.about-me
   .about-me__avatar-outer
     .about-me__avatar

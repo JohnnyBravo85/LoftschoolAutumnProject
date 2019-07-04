@@ -1,1 +1,10 @@
+mixin nav
+  -var items= ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
+  -var links= ["main", "about-me", "skills", "projects", "reviews", "contact"]
+  nav.nav
+    ul(class=`nav__block`)
+      each item, index in items
+        li(class=`nav__item`)
+          a(class=`nav__link` href=`#${links[index]}`)= item
+
 +nav

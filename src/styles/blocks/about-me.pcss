@@ -1,9 +1,14 @@
 .about-me {
   margin-bottom: 18.31%;
+  position: relative;
   display: grid;
   grid-template-columns: .35fr .35fr;
   justify-content: center;
   color: $text-color;
+  z-index: 30;
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .about-me__avatar-outer {

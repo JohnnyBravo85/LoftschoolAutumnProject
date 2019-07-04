@@ -11,6 +11,10 @@
 .footer__author {
   margin-right: 9.46%;
   display: flex;
+  @include desktop {
+    flex-direction: column;
+     margin-right: 3%;
+  }
 }
 
 .footer__copyright {
@@ -20,6 +24,9 @@
   font-weight: 600;
   line-height: .63;
   opacity: .1;
+  @include desktop {
+    margin-bottom: 31px;
+  }
 }
 
 .footer__author-name {
@@ -27,6 +34,9 @@
   font-size: 18px;
   font-weight: bold;
   line-height: 1.67;
+  @include desktop {
+    width: 50%;
+  }
 }
 
 .footer__author-text {
@@ -37,6 +47,9 @@
 .footer__nav {
   margin-bottom: 70px;
   padding-right: 30%;
+  @include laptop {
+    padding-right: 0;
+  }
 }
 
 .footer__info-block {
@@ -44,8 +57,10 @@
 }
 
 .footer__note {
-  width: 39.55;
-  margin-right: 195px;
+  margin-right: 15%;
+  @include desktop {
+    margin-right: 10%;
+  }
 }
 
 .footer__about-site {

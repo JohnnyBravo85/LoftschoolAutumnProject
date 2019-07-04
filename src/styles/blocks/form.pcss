@@ -25,6 +25,9 @@
   width: 27.57%;
   display: flex;
   flex-direction: column;
+  @include laptop {
+    width: 100%;
+  }
 }
 
 .form__label-name {
@@ -33,6 +36,9 @@
 
 .form__label-message {
   width: 58.32%;
+  @include laptop {
+    width: 100%;
+  }
 }
 
 .form__label-title {
