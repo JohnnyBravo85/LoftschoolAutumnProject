@@ -20,22 +20,46 @@
       bottom: -4%;
       background-size: contain;
     }
+    @include tablets {
+      width: 337px;
+      height: 337px;
+      left: 50%;
+      bottom: 0;
+      background-size: contain;
+      transform: translateX(-50%) rotate(-90deg);
+    }
   }
 }
 
 .skills__block-text {
-  padding-top: 129px;
+  padding-top: 8.73%;
   padding-bottom: 149px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 10;
+  @include phones {
+    padding-top: 36.77%;
+  }
 }
 
 .skills__profit {
   width: 39.6%;
   margin-bottom: 96px;
+  @include desktop {
+    width: 50%;
+  }
+  @include tablets {
+    margin-bottom: 60px;
+    width: 55%;
+    text-align: center;
+  }
+  @include tablets {
+    margin-bottom: 60px;
+    width: 100%;
+    text-align: left;
+  }
 }
 
 .skills__title {

@@ -1,5 +1,9 @@
 .slider {
   display: flex;
+  @include tablets {
+    flex-direction: column;
+
+  }
 }
 
 .slider__display {
@@ -21,6 +25,22 @@
     top: -60px;
     right: -120px;
   }
+  @include tablets {
+    font-size: 300px;
+    top: -8px;
+    right: -120px;
+  }
+  @include phones {
+    content: none;
+  }
+  }
+  @include tablets {
+    margin-right: 0;
+    margin-bottom: 12.91%;
+    width: 85%;
+  }
+  @include phones {
+    width: 100%;
   }
 }
 
@@ -49,6 +69,13 @@
   bottom: 100px;
   right: -50px;
   background-color: $slider-control-bg;
+  @include tablets {
+    bottom: 25px;
+  }
+  @include phones {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .slider__control-button {
@@ -75,11 +102,17 @@
   position: absolute;
   bottom: 100px;
   right: 0;
+  @include tablets {
+    bottom: 25px;
+  }
 }
 
 .slider__previews-list {
   display: flex;
   justify-content: flex-end;
+  @include phones {
+    display: none;
+  }
 }
 
 .slider__previews-item {
@@ -109,6 +142,14 @@
   flex: 1;
   position: relative;
   z-index: 10;
+  @include tablets {
+    text-align: center;
+    align-items: center;
+  }
+  @include phones {
+    text-align: left;
+    align-items: flex-start;
+  }
 }
 
 .slider__tags {
@@ -139,6 +180,12 @@
 
 .slider__text {
   margin-bottom: 50px;
+  @include tablets {
+    width: 60%;
+  }
+  @include phones {
+    width: 100%;
+  }
 }
 
 .slider__text p {

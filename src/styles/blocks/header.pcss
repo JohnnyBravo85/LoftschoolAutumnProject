@@ -10,13 +10,16 @@
     margin-bottom: 23.69%;
   }
   @include tablets {
-    margin-bottom: 10%;
+    margin-bottom: 18.22%;
+  }
+  @include phones {
+    margin-bottom: 48.17%;
   }
 }
 
 .header__nav {
   width: 100%;
-  padding: 0 19.66%;
+  padding: 0 17%;
   @include laptop {
     padding: 0 5%;
   }
@@ -29,5 +32,8 @@
   margin-right: 40px;
   &:last-child {
     margin-right: 0;
+  }
+  @include phones {
+    display: none;
   }
 }

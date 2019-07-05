@@ -6,6 +6,9 @@
   @include desktop {
     margin-right: 0;
   }
+  @include tablets {
+    align-self: center;
+  }
 }
 
 .my-skills__frontend {
@@ -16,10 +19,15 @@
   margin-bottom: 50px;
   font-size: 24px;
   font-weight: bold;
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .my-skills__list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .my-skills__item {
@@ -27,6 +35,22 @@
   position: relative;
   &:last-child {
     margin-right: 0;
+  }
+  @include tablets {
+    margin-right: 30px;
+  }
+  @include phones {
+    margin-right: 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:nth-child(1) {
+      margin-bottom: 20px;
+    }
+    &:nth-child(2) {
+      margin-bottom: 20px;
+    }
   }
 }
 
@@ -38,6 +62,9 @@
   opacity: .5;
   font-size: 18px;
   font-weight: bold;
+  @include phones {
+    z-index: 5;
+  }
 }
 
 .persentage {
@@ -45,12 +72,23 @@
   width: 134px;
   height: 134px;
   transform: rotate(180deg);
+  @include tablets {
+    width: 108px;
+    height: 108px;
+  }
+  @include phones {
+    width: 122px;
+    height: 122px;
+  }
 }
 
 .circle {
   fill: transparent;
   stroke-width: 10px;
   stroke: $circle-skill-color;
+  @include tablets {
+    radius: 30px;
+  }
 }
 
 .circle__above {

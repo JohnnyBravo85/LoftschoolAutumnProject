@@ -8,6 +8,18 @@
   z-index: 30;
   @include desktop {
     grid-template-columns: 1fr 1fr;
+    grid-gap: 0 10.88%;
+  }
+  @include phones {
+    margin-bottom: 0;
+    grid-template-columns: 1fr;
+    grid-template-rows: .5fr 1fr 1fr 1fr;
+    grid-gap: 50px;
+    grid-template-areas: 
+    "avatar"
+    "information"
+    "descriprion"
+    "note";
   }
 }
 
@@ -20,6 +32,10 @@
   height: 200px;
   overflow: hidden;
   margin-bottom: 79px;
+  @include tablets {
+  width: 170px;
+  height: 170px;
+  }
 }
 
 .about-me__pic {
@@ -49,6 +65,9 @@
 
 .about-me__information-outer {
   justify-self: center;
+  @include phones {
+    grid-area: information;
+  }
 }
 
 .about-me__table-cell {
@@ -62,6 +81,9 @@
   opacity: .15;
   &:last-child {
     padding: 0;
+  }
+  @include phones {
+    padding-right: 50px;
   }
 }
 
@@ -82,5 +104,8 @@
     font-style: italic;
     color: $footnote-star-color;
     opacity: .7;
+    @include phones {
+      content: none;
+    }
   }
 }

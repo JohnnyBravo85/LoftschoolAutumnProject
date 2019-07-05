@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* background-color: $paralax-bg; */
+  background-color: $paralax-bg;
 }
 
 .paralax__layer {
@@ -21,6 +21,9 @@
   position: absolute;
   top: 0;
   left: 10;
+  @include tablets {
+    height: 350px;
+  }
 }
 
 .paralax__layer:nth-child(2) {
@@ -29,10 +32,13 @@
   left: 0;
   z-index: 15;
   @include desktop {
-    top: 13%;
+    top: 12%;
   }
   @include tablets {
-    top: 9%;
+    top: 14.5%;
+  }
+  @include phones {
+    top: 10%;
   }
 }
 
@@ -45,7 +51,10 @@
     top: 20.5%;
   }
   @include tablets {
-    top: 16.1%;
+    top: 21%;
+  }
+  @include phones {
+    top: 13%;
   }
 }
 
@@ -55,7 +64,13 @@
   left: 0;
   z-index: 5;
   @include desktop {
-    top: 26.5%;
+    top: 27%;
+  }
+  @include tablets {
+    top: 25%;
+  }
+  @include phones {
+    top: 16%;
   }
 }
 
@@ -65,7 +80,10 @@
   left: 0;
   z-index: 10;
   @include desktop {
-    top: 29.5%;
+    top: 29%;
+  }
+  @include phones {
+    top: 18%;
   }
 }
 
@@ -79,5 +97,4 @@
 .paralax__layer:nth-child(6) img {
   object-fit: cover;
   width: 100%;
-  height: 191px;
 }

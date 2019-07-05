@@ -6,14 +6,22 @@
   }
 }
 
-.reviews__title {
-  margin-right: 97px;
-}
-
 .reviews__slider-panel {
   margin-bottom: 6.49%;
   display: flex;
   align-items: center;
+  @include phones {
+    flex-direction: column;
+  }
+}
+
+.reviews__title {
+  margin-right: 97px;
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 25px;
+    text-align: center;
+  }
 }
 
 .reviews__slider-conrol {
@@ -62,6 +70,12 @@
     width: 100%;
     grid-gap: 0 50px;
   }
+  @include tablets {
+    margin-left: 4%;
+  }
+  @include phones {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reviews__item {
@@ -82,9 +96,23 @@
     background: svg-load('quote.svg', fill=$reviews-list-item-before-color, width=100%, height=100%);
     background-repeat: no-repeat;
     @include laptop {
+      width: 69px;
+      height: 58px;
       left: -20%;
     }
+    @include tablets {
+      width: 30px;
+      height: 25px;
+      left: -13%;
+    }
   }
+  @include phones {
+    display: none;
+  }
+}
+
+.reviews__item--active {
+  display: grid;
 }
 
 .reviews__item p {

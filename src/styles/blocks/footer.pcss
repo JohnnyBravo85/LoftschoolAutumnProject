@@ -6,6 +6,9 @@
 .footer__container {
   display: flex;
   padding: 5.81% 0;
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__author {
@@ -14,6 +17,14 @@
   @include desktop {
     flex-direction: column;
      margin-right: 3%;
+  }
+  @include tablets {
+    width: 35%;
+  }
+  @include phones {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 50px;
   }
 }
 
@@ -30,12 +41,15 @@
 }
 
 .footer__author-name {
-  margin-bottom: 34px;
+  margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
   line-height: 1.67;
   @include desktop {
     width: 50%;
+  }
+   @include phones {
+    width: 100%;
   }
 }
 
@@ -50,16 +64,48 @@
   @include laptop {
     padding-right: 0;
   }
+  @include phones {
+    margin-bottom: 30px;
+  }
+}
+
+.footer__nav .nav .nav__block {
+  @include tablets {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.footer__nav .nav .nav__block .nav__item {
+  @include tablets {
+    width: 25%;
+  }
+  @include phones {
+    width: 50%;
+    margin-bottom: 25px;
+    &:nth-last-child(2) {
+      margin-bottom: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .footer__info-block {
   display: flex;
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .footer__note {
   margin-right: 15%;
   @include desktop {
     margin-right: 10%;
+  }
+  @include tablets {
+    margin-bottom: 60px;
   }
 }
 
@@ -87,7 +133,7 @@
 }
 
 .footer__quote-text {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   width: 87.38%;
   opacity: .3;
   line-height: 1.88;

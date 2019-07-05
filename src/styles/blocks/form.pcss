@@ -1,10 +1,17 @@
 .form {
   margin-bottom: 11.65%;
   color: $text-color;
+  @include phones {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .form__title {
   margin-bottom: 6.56%;
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .form__row {
@@ -12,6 +19,9 @@
   margin-bottom: 41px;
   &:nth-last-of-type(1) {
     margin-bottom: 60px;
+  }
+  @include phones {
+    flex-direction: column;
   }
 }
 
@@ -32,6 +42,10 @@
 
 .form__label-name {
   margin-right: 51px;
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 35px;
+  }
 }
 
 .form__label-message {
@@ -75,7 +89,7 @@
   color: $text-color;
   order: 10;
   &::placeholder {
-    width: 50%;
+    width: 100%;
     color: $placeholder-text-color;
   }
 }
@@ -99,4 +113,7 @@
   height: 80px;
   overflow: hidden;
   resize: none;
+  @include phones {
+    height: 150px;
+  }
 }
