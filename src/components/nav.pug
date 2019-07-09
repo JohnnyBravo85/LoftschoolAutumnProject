@@ -1,10 +1,10 @@
-mixin nav
+mixin nav(mod)
   -var items= ["Главная", "Обо мне", "Навыки", "Работы", "Отзывы", "Связаться"]
   -var links= ["main", "about-me", "skills", "projects", "reviews", "contact"]
   nav.nav
-    ul(class=`nav__block`)
+    ul(class=`nav__block ${mod}`)
       each item, index in items
         li(class=`nav__item`)
           a(class=`nav__link` href=`#${links[index]}`)= item
 
-+nav
++nav("header-navigation")

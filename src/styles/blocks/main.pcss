@@ -6,6 +6,8 @@
   justify-content: center;
   flex-wrap: wrap;
   z-index: 20;
+  opacity: 1;
+  transition: opacity ease-in-out 2.5s;
   @include desktop {
     margin-bottom: 20.53%;
   }
@@ -15,6 +17,11 @@
   @include phones {
     z-index: 30;
   }
+}
+
+.main--active {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .main__site-description {

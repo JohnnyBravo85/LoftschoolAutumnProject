@@ -5,6 +5,8 @@
   "bp-tablets": "768px",
   "bp-phones": "480px",
   "text-color": "#fff",
+  "fixed-menu-color": "#6f6964",
+  "fixed-menu-bg-color": "#fff",
   "paralax-bg": "#1b1f22",
   "burger-menu": "#fff",
   "placeholder-text-color": "#fff",
