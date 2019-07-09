@@ -15,7 +15,7 @@ script(type="text/x-template")#reviews-slider-control
 script(type="text/x-template")#reviews-slider-content
   .reviews__slider-content
     ul.reviews__list
-      li.reviews__item
+      li.reviews__item(v-for="review in reviews")
         p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
         div.reviews__hero-block
           div.reviews__hero-avatar
@@ -23,11 +23,11 @@ script(type="text/x-template")#reviews-slider-content
           div.reviews__hero-text
             h5 Ковальчук Дмитрий
             div Основатель Loftschool
-      li.reviews__item
-        p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-        div.reviews__hero-block
-          div.reviews__hero-avatar
-            +image("content/vova.jpg", "reviews-list__img", "аватар пользователя")
-          div.reviews__hero-text
-            h5 Владимир Сабанцев
-            div Преподаватель
+      //- li.reviews__item
+      //-   p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
+      //-   div.reviews__hero-block
+      //-     div.reviews__hero-avatar
+      //-       +image("content/vova.jpg", "reviews-list__img", "аватар пользователя")
+      //-     div.reviews__hero-text
+      //-       h5 Владимир Сабанцев
+      //-       div Преподаватель
