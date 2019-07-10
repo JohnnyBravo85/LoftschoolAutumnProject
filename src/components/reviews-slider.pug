@@ -2,32 +2,24 @@ script(type="text/x-template")#reviews-slider
   .reviews__slider-container
     .reviews__slider-panel
       h2.reviews__title.title Что обо мне говорят
-      reviewsSliderControl
-    reviewsSliderContent
-
-script(type="text/x-template")#reviews-slider-control
-  .reviews__slider-conrol
-    button(type="button").reviews__prev-button.reviews__buttons
-      +icon("short-arrow", "reviews__prev-icon reviews__icon")
-    button(type="button").reviews__next-button.reviews__buttons
-      +icon("short-arrow", "reviews__next-icon reviews__icon")
+      .reviews__slider-conrol
+        button(type="button" @click="previous()").reviews__prev-button.reviews__buttons
+          +icon("short-arrow", "reviews__prev-icon reviews__icon")
+        button(type="button" @click="next()").reviews__next-button.reviews__buttons
+          +icon("short-arrow", "reviews__next-icon reviews__icon")
+    .reviews__slider-content
+      flickity(ref="flickity" :options="flickityOptions")
+        li.reviews__item(v-for="review in reviews")
+          reviewsSliderContent(
+            :review="review"
+          )
 
 script(type="text/x-template")#reviews-slider-content
-  .reviews__slider-content
-    ul.reviews__list
-      li.reviews__item(v-for="review in reviews")
-        p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-        div.reviews__hero-block
-          div.reviews__hero-avatar
-            +image("content/dima.jpg", "reviews-list__img", "аватар пользователя")
-          div.reviews__hero-text
-            h5 Ковальчук Дмитрий
-            div Основатель Loftschool
-      //- li.reviews__item
-      //-   p Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-      //-   div.reviews__hero-block
-      //-     div.reviews__hero-avatar
-      //-       +image("content/vova.jpg", "reviews-list__img", "аватар пользователя")
-      //-     div.reviews__hero-text
-      //-       h5 Владимир Сабанцев
-      //-       div Преподаватель
+  div.reviews__review-outer
+    p {{review["hero-text"]}}
+    div.reviews__hero-block
+      div.reviews__hero-avatar
+        img.reviews-list__img(:src="review.avatar" alt="аватар пользователя")
+      div.reviews__hero-text
+        h5 {{review["hero-name"]}}
+        div {{review["hero-stuff"]}}

@@ -1,7 +1,9 @@
 script(type="text/x-template")#skills-list
   ul.my-skills
     li.my-skills__group-item(v-for="skill in skills")
-      groupSkillName(:skill="skill")
+      groupSkillName(
+        :skill="skill"
+        )
 
 script(type="text/x-template")#groupSkillName
   .my-skills__skills-group
