@@ -2,24 +2,26 @@
   margin-bottom: 18.31%;
   position: relative;
   display: grid;
-  grid-template-columns: .35fr .35fr;
+  grid-template-columns: 0.35fr 0.35fr;
   justify-content: center;
   color: $text-color;
   z-index: 30;
+
   @include desktop {
     grid-template-columns: 1fr 1fr;
     grid-gap: 0 10.88%;
   }
+
   @include phones {
     margin-bottom: 0;
     grid-template-columns: 1fr;
-    grid-template-rows: .5fr 1fr 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr;
     grid-gap: 50px;
     grid-template-areas: 
-    "avatar"
-    "information"
-    "descriprion"
-    "note";
+      "avatar"
+      "information"
+      "descriprion"
+      "note";
   }
 }
 
@@ -32,9 +34,10 @@
   height: 200px;
   overflow: hidden;
   margin-bottom: 79px;
+
   @include tablets {
-  width: 170px;
-  height: 170px;
+    width: 170px;
+    height: 170px;
   }
 }
 
@@ -51,7 +54,7 @@
 
 .about-me__hello {
   margin-bottom: 5.8%;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .about-me__title {
@@ -60,11 +63,12 @@
 
 .about-me__job {
   margin-bottom: 12.27%;
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .about-me__information-outer {
   justify-self: center;
+
   @include phones {
     grid-area: information;
   }
@@ -78,10 +82,11 @@
   padding-right: 100px;
   padding-bottom: 25px;
   font-weight: 600;
-  opacity: .15;
+  opacity: 0.15;
   &:last-child {
     padding: 0;
   }
+
   @include phones {
     padding-right: 50px;
   }
@@ -94,8 +99,8 @@
 .about-me__footnote {
   position: relative;
   line-height: 1.88;
-  opacity: .5;
-  &:before {
+  opacity: 0.5;
+  &::before {
     content: "*";
     position: absolute;
     top: -10px;
@@ -103,7 +108,8 @@
     font-size: 48px;
     font-style: italic;
     color: $footnote-star-color;
-    opacity: .7;
+    opacity: 0.7;
+    
     @include phones {
       content: none;
     }

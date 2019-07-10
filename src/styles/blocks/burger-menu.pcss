@@ -3,9 +3,9 @@
   height: 2.5px;
   position: relative;
   display: none;
-  transition: transform ease-in-out .5s;
-  background-color: $burger-menu;
+  transition: transform ease-in-out 0.5s;
   background-color: $fixed-menu-color;
+
   @include tablets {
     display: block;
   }
@@ -17,8 +17,7 @@
     top: 10px;
     left: 0;
     display: block;
-    transition: transform ease-in-out .5s;
-    background-color: $burger-menu;
+    transition: transform ease-in-out 0.5s;
     background-color: $fixed-menu-color;
   }
   &::after {
@@ -31,7 +30,6 @@
     display: block;
     opacity: 1;
     transition: opacity ease-in-out 2s;
-    background-color: $burger-menu;
     background-color: $fixed-menu-color;
   }
 }
@@ -41,9 +39,8 @@
   height: 2.5px;
   position: relative;
   display: block;
-  transition: transform ease-in-out .5s;
+  transition: transform ease-in-out 0.5s;
   transform: rotate(-45deg);
-  background-color: $burger-menu;
   background-color: $fixed-menu-color;
   &::before {
     content: "";
@@ -53,9 +50,8 @@
     top: 0;
     left: 0;
     display: block;
-    transition: transform ease-in-out .5s;
+    transition: transform ease-in-out 0.5s;
     transform: rotate(90deg);
-    background-color: $burger-menu;
     background-color: $fixed-menu-color;
   }
   &::after {
@@ -66,8 +62,7 @@
     top: -10px;
     left: 0;
     opacity: 0;
-    transition: transform ease-in-out .01s;
-    background-color: $burger-menu;
+    transition: transform ease-in-out 0.01s;
     background-color: $fixed-menu-color;
   }
 }

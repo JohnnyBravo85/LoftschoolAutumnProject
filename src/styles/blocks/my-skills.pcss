@@ -3,9 +3,11 @@
   display: flex;
   flex-direction: column;
   align-self: flex-end;
+
   @include desktop {
     margin-right: 0;
   }
+
   @include tablets {
     align-self: center;
   }
@@ -22,6 +24,7 @@
   margin-bottom: 50px;
   font-size: 24px;
   font-weight: bold;
+
   @include tablets {
     text-align: center;
   }
@@ -39,9 +42,11 @@
   &:last-child {
     margin-right: 0;
   }
+
   @include tablets {
     margin-right: 30px;
   }
+
   @include phones {
     margin-right: 0;
     width: 50%;
@@ -62,9 +67,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  opacity: .5;
+  opacity: 0.5;
   font-size: 18px;
   font-weight: bold;
+
   @include phones {
     z-index: 5;
   }
@@ -75,10 +81,12 @@
   width: 134px;
   height: 134px;
   transform: rotate(180deg);
+
   @include tablets {
     width: 108px;
     height: 108px;
   }
+
   @include phones {
     width: 122px;
     height: 122px;
@@ -89,6 +97,7 @@
   fill: transparent;
   stroke-width: 10px;
   stroke: $circle-skill-color;
+  
   @include tablets {
     radius: 30px;
   }
