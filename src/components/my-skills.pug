@@ -14,7 +14,7 @@ script(type="text/x-template")#groupSkillName
                   :skillPersent="skillPersent")
 
 script(type="text/x-template")#skillName
-  .my-skills__skill
+  .my-skills__skill(ref="skills-block")
     div.my-skills__list-title {{skillName}}
     svg(class="persentage" viewBox="0 0 100 100" preserveAspectRatio="none")
       defs

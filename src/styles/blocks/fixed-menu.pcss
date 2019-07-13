@@ -3,15 +3,13 @@
   padding-left: 5%;
   position: fixed;
   top: 0;
-  right: 0;
+  right: -45%;
   bottom: 0;
   display: flex;
-  visibility: hidden;
   flex-direction: column;
   justify-content: center;
-  opacity: 0;
   background-color: $fixed-menu-bg-color;
-  transition: opacity ease-in-out 1s, visibility ease-in-out 1s;
+  transition: transform ease-in-out 1s, opacity ease-in-out 0.5s;
   z-index: 30;
 }
 
@@ -46,7 +44,7 @@
 }
 
 .fixed-menu--active {
-  visibility: visible;
+  transform: translateX(-100%);
   opacity: 0.7;
-  transition: opacity ease-in-out 1s, visibility ease-in-out 1s;
+  transition: transform ease-in-out 1s, opacity ease-in-out 0.5s;
 }

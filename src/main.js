@@ -7,3 +7,4 @@ import "./scripts/paralax";
 import "./scripts/burger-menu";
 import "./scripts/review-slider";
 import "./scripts/skills";
+import "./scripts/slider"

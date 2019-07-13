@@ -5,21 +5,18 @@
   background-size: cover;
   &::before {
     content: "";
-    width: 662px;
-    height: 983px;
+    width: 37%;
+    height: 100%;
     display: block;
     position: absolute;
     left: 0;
     bottom: -8%;
-    background: url("../images/content/heands.png") no-repeat;
-    background-size: cover;
+    background: url("../images/content/heands.png") 0 100% / contain no-repeat;
 
     @include desktop {
-      width: 395px;
-      height: 581px;
+      width: 41%;
       left: -6.5%;
       bottom: -4%;
-      background-size: contain;
     }
 
     @include tablets {
