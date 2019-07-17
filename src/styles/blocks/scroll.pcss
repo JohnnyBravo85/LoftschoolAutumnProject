@@ -1,0 +1,35 @@
+.scroll {
+  margin-bottom: 11.49%;
+  display: flex;
+  justify-content: center;
+  @include desktop {
+    margin-bottom: 58.86%;
+  }
+}
+
+.scroll__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  transition: color ease-in-out .5s;
+  z-index: 30;
+  &:hover {
+    color: $hover-color;
+  }
+  &:hover .scroll__icon {
+   fill: $hover-color;
+  }
+}
+
+.scroll__text {
+  margin-right: 21px;
+}
+
+.scroll__icon {
+  width: 19px;
+  height: 30px;
+  fill: $controls-icon-color;
+  transition: fill ease-in-out .5s;
+}

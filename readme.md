@@ -30,7 +30,7 @@ $ yarn имя_скрипта
 
 ### Gh-Pages Link:
 
-
+https://johnnybravo85.github.io/LoftschoolAutumnProject/.
 
 ### По ТЗ:
 

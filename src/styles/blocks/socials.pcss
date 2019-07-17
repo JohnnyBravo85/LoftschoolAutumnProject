@@ -1,0 +1,16 @@
+.socials {
+  display: flex;
+}
+
+.socials__item {
+  &:hover .socials__icon {
+    fill: $hover-color;
+  }
+}
+
+.socials__icon {
+  width: 25px;
+  height: 25px;
+  fill: $social-icons-color;
+  transition: fill ease-in-out .5s;
+}

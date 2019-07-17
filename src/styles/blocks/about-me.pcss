@@ -1,0 +1,86 @@
+.about-me {
+  margin-bottom: 18.31%;
+  position: relative;
+  display: grid;
+  grid-template-columns: .35fr .35fr;
+  justify-content: center;
+  color: $text-color;
+  z-index: 30;
+  @include desktop {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.about-me__avatar-outer {
+  justify-self: center;
+}
+
+.about-me__avatar {
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  margin-bottom: 79px;
+}
+
+.about-me__pic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.about-me__description {
+  width: 35%;
+}
+
+.about-me__hello {
+  margin-bottom: 5.8%;
+  opacity: .5;
+}
+
+.about-me__title {
+  margin-bottom: 7.34%;
+}
+
+.about-me__job {
+  margin-bottom: 12.27%;
+  opacity: .5;
+}
+
+.about-me__information-outer {
+  justify-self: center;
+}
+
+.about-me__table-cell {
+  vertical-align: top;
+}
+
+.about-me__key {
+  padding-right: 100px;
+  padding-bottom: 25px;
+  font-weight: 600;
+  opacity: .15;
+  &:last-child {
+    padding: 0;
+  }
+}
+
+.about-me__row:last-child .about-me__key {
+  padding: 0;
+}
+
+.about-me__footnote {
+  position: relative;
+  line-height: 1.88;
+  opacity: .5;
+  &:before {
+    content: "*";
+    position: absolute;
+    top: -10px;
+    left: -60px;
+    font-size: 48px;
+    font-style: italic;
+    color: $footnote-star-color;
+    opacity: .7;
+  }
+}

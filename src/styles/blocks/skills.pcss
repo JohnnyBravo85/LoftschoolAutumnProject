@@ -1,0 +1,43 @@
+.skills {
+  position: relative;
+  color: $text-color;
+  background: url("../images/content/gray.jpg") no-repeat;
+  background-size: cover;
+  &::before {
+    content: "";
+    width: 662px;
+    height: 983px;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -8%;
+    background: url("../images/content/heands.png") no-repeat;
+    background-size: cover;
+    @include desktop {
+      width: 395px;
+      height: 581px;
+      left: -6.5%;
+      bottom: -4%;
+      background-size: contain;
+    }
+  }
+}
+
+.skills__block-text {
+  padding-top: 129px;
+  padding-bottom: 149px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.skills__profit {
+  width: 39.6%;
+  margin-bottom: 96px;
+}
+
+.skills__title {
+  margin-bottom: 59px;
+}

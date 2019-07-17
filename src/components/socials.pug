@@ -1,0 +1,9 @@
+mixin socials(mod)
+  -var items= [{name: 'instagram', href: '#'}, {name: 'vk', href: '#'}, {name: 'github', href: '#'}]
+  ul(class=`socials socials--${mod}`)
+    each item in items
+      li.socials__item
+        a(href=`${item.href}`).socials__link
+          +icon(`${item.name}`, 'socials__icon')
+
++socials("header")

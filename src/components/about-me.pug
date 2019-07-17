@@ -1,0 +1,19 @@
+mixin table(items)
+  table.about-me__information
+    each item in items
+      tr.about-me__row
+        td.about-me__key.about-me__table-cell= `${item.key}`
+        td.about-me__property.about-me__table-cell= `${item.property}`
+
+section.about-me
+  .about-me__avatar-outer
+    .about-me__avatar
+      +image("content/avatar.jpg", "about-me__pic", "фотография автора")
+  .about-me__description-outer
+    h6.about-me__hello.text Привет, меня зовут
+    h2.about-me__title.title Дмитрий Семёнов
+    p.about-me__job.text Я занимаюсь разработкой современных сайтов и приложений. Мне нравится делать интересные и современные проекты.
+  .about-me__information-outer
+    +table([{key:"Проживаю:", property:"Москва"}, {key:"Возраст:",property:"33"}, {key:"Родился:", property:"11 ноября 1985"}])
+  .about-me__footnote-outer
+    p.about-me__footnote Этот сайт я сделал в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
