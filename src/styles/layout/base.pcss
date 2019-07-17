@@ -1,8 +1,10 @@
 html {
   font-size: 16px;
+
   @include laptop {
     font-size: 15px;
   }
+
   @include tablets {
     font-size: 14px;
   }
@@ -13,12 +15,16 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-family: "Open Sans", Helvetica, sans-serif;
   font-size: 16px;
   line-height: 1.42;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $text-color;
+}
+
+.body--active {
+  overflow: hidden;
 }
 
 .wrapper {
@@ -31,8 +37,7 @@ body {
   margin: 0 auto;
   max-width: 1480px;
   width: 95%;
-  height: 100%;
-  // width: 1490px;
+
   @include phones {
     width: 85%;
   }
@@ -45,7 +50,7 @@ body {
 
 .text {
   font-size: 16px;
-  opacity: .5;
+  opacity: 0.5;
   font-weight: 600;
   line-height: 1.88;
 }
@@ -54,13 +59,18 @@ body {
   font-size: 36px;
   font-weight: bold;
   line-height: 1.2;
+
+  @include tablets {
+    font-size: 30px;
+  }
 }
 
 * {
   box-sizing: border-box;
 }
 
-ul, li {
+ul,
+li {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -85,6 +95,7 @@ button {
   cursor: pointer;
   background-color: transparent;
   border: none;
+  outline: none;
 }
 
 a {

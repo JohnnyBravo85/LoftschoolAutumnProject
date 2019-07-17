@@ -6,15 +6,32 @@
   justify-content: center;
   flex-wrap: wrap;
   z-index: 20;
+  opacity: 1;
+  transition: opacity ease-in-out 2.5s;
+
   @include desktop {
     margin-bottom: 20.53%;
   }
+
+  @include tablets {
+    margin-bottom: 98.91%;
+  }
+
+  @include phones {
+    z-index: 30;
+  }
+}
+
+.main--active {
+  visibility: hidden;
+  opacity: 0;
 }
 
 .main__site-description {
   width: 100%;
   display: flex;
   justify-content: center;
+
   @include tablets {
     flex-direction: column;
     align-items: center;
@@ -27,10 +44,21 @@
   font-size: 18px;
   font-weight: 600;
   line-height: 1.67;
-  opacity: .4;
+  opacity: 0.4;
+
+  @include desktop {
+    width: 21.15%;
+    text-align: center;
+  }
+
   @include tablets {
+    margin-right: 0;
     width: 34%;
     text-align: center;
+  }
+
+  @include phones {
+    width: 60%;
   }
 }
 
@@ -40,10 +68,21 @@
   align-items: flex-start;
   font-size: 72px;
   font-weight: 800;
-  line-height: .9;
+  line-height: 0.9;
+
+  @include desktop {
+    width: 41%;
+    font-size: 48px;
+    text-align: left;
+  }
+
   @include tablets {
     width: 50%;
     font-size: 48px;
     text-align: center;
+  }
+  
+  @include phones {
+    width: 100%;
   }
 }

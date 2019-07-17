@@ -6,14 +6,29 @@
 .footer__container {
   display: flex;
   padding: 5.81% 0;
+
+  @include phones {
+    flex-direction: column;
+  }
 }
 
 .footer__author {
   margin-right: 9.46%;
   display: flex;
+
   @include desktop {
     flex-direction: column;
-     margin-right: 3%;
+    margin-right: 3%;
+  }
+
+  @include tablets {
+    width: 35%;
+  }
+
+  @include phones {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 50px;
   }
 }
 
@@ -22,62 +37,105 @@
   margin-right: 60px;
   font-size: 48px;
   font-weight: 600;
-  line-height: .63;
-  opacity: .1;
+  line-height: 0.63;
+  opacity: 0.1;
+
   @include desktop {
     margin-bottom: 31px;
   }
 }
 
 .footer__author-name {
-  margin-bottom: 34px;
+  margin-bottom: 20px;
   font-size: 18px;
   font-weight: bold;
   line-height: 1.67;
+
   @include desktop {
     width: 50%;
+  }
+
+  @include phones {
+    width: 100%;
   }
 }
 
 .footer__author-text {
   line-height: 1.88;
-  opacity: .15;
+  opacity: 0.15;
 }
 
 .footer__nav {
   margin-bottom: 70px;
   padding-right: 30%;
+
   @include laptop {
     padding-right: 0;
+  }
+
+  @include phones {
+    margin-bottom: 30px;
+  }
+}
+
+.footer__nav .nav .nav__block {
+
+  @include tablets {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.footer__nav .nav .nav__block .nav__item {
+
+  @include tablets {
+    width: 25%;
+  }
+
+  @include phones {
+    width: 50%;
+    margin-bottom: 25px;
+    &:nth-last-child(2) {
+      margin-bottom: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }
 
 .footer__info-block {
   display: flex;
+
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .footer__note {
   margin-right: 15%;
+
   @include desktop {
     margin-right: 10%;
+  }
+
+  @include tablets {
+    margin-bottom: 60px;
   }
 }
 
 .footer__about-site {
   margin-bottom: 27px;
-  opacity: .3;
+  opacity: 0.3;
 }
 
 .socials--footer .socials__item {
   margin-right: 20px;
   width: 50px;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: 3px solid $social-icons-color;
   border-radius: 50%;
-  transition: border-color ease-in-out .5s;
+  transition: border-color ease-in-out 0.5s;
   &:last-child {
     margin-right: 0;
   }
@@ -87,9 +145,9 @@
 }
 
 .footer__quote-text {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   width: 87.38%;
-  opacity: .3;
+  opacity: 0.3;
   line-height: 1.88;
 }
 

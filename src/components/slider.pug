@@ -1,31 +1,71 @@
-.slider
-  .slider__display
-    .slider__content
-      .slider__pic
-          +image("content/1.jpg", "slider__img", "фотография работы")
-    .slider__control
-      button(type="button").slider__control-button.slider__control-button-prev
-        +icon("short-arrow", "slider__prev-icon slider__control-icon")
-      button(type="button").slider__control-button.slider__control-button-next
-        +icon("short-arrow", "slider__next-icon slider__control-icon")
-    .slider__previews
-      ul.slider__previews-list
-        li.slider__previews-item.slider__previews-item--active
-          +image("content/1.jpg", "slider__previews-img", "фотография работы")
-        li.slider__previews-item
-          +image("content/2.jpg", "slider__previews-img", "фотография работы")
-        li.slider__previews-item
-          +image("content/3.jpg", "slider__previews-img", "фотография работы")
-        li.slider__previews-item
-          +image("content/4.jpg", "slider__previews-img", "фотография работы")
+script(type="text/x-template")#slider
+  .slider
+    sliderDisplay(
+      :sliderWorksObject="sliderWorksObject"
+      :sliderWorksArray="sliderWorksArray"
+      :currentWorkIndex="currentWorkIndex"
+      @slide="slideWorks"
+      @click="clickAtWork"
+      )
+    sliderDesck(
+      :sliderWorksObject="sliderWorksObject"
+    )
+
+script(type="text/x-template")#slider-display
+  .slider__display(:data-slide="currentWorkIndex+1")
+    sliderContent(
+      :sliderWorksObject="sliderWorksObject"
+      )
+    sliderControls(
+      @slide="direction => $emit('slide', direction)"
+    )
+    sliderPreviews(
+      :sliderWorksArray="sliderWorksArray"
+      :sliderWorksObject="sliderWorksObject"
+      @click="workIndex => $emit('click', workIndex)"
+      )
+
+script(type="text/x-template")#slider-content
+  .slider__content
+    .slider__pic
+      img(:src="sliderWorksObject.photo" alt="фотография работы")
+      
+script(type="text/x-template")#slider-controls
+  .slider__control
+    button(type="button" @click="$emit('slide', 'next')").slider__control-button.slider__control-button-next
+      +icon("short-arrow", "slider__prev-icon slider__control-icon")
+    button(type="button" @click="$emit('slide', 'prev')").slider__control-button.slider__control-button-prev
+      +icon("short-arrow", "slider__next-icon slider__control-icon")
+
+script(type="text/x-template")#slider-previews
+  .slider__previews
+    ul.slider__previews-list
+      li(
+        v-for="(sliderWork, workIndex) in sliderWorksArray" 
+        :class="{sliderPreviewsItemActive : sliderWork.id===sliderWorksObject.id}"
+        @click="$emit('click', workIndex)"
+        ).slider__previews-item
+        button(type="button").slider__previews-button
+          img(:src="sliderWork.photo" class="slider__previews-img" alt="фотография работы")
+
+script(type="text/x-template")#slider-desck
   .slider__desck
+    sliderTags(
+      :sliderWorksObject="sliderWorksObject"
+    )
+    sliderText(
+      :sliderWorksObject="sliderWorksObject"
+    )
+
+script(type="text/x-template")#slider-tags
     ul.slider__tags
-      li.slider__tag-item HTML
-      li.slider__tag-item CSS
-      li.slider__tag-item Javascript
-    h3.slider__title Сайт школы образования
+      li.slider__tag-item(v-for="tag in tagsArray") {{tag}}
+
+script(type="text/x-template")#slider-text
+  .slider__text-outer
+    h3.slider__title {{sliderWorksObject.title}}
     .slider__text
-      p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-    a.slider__link
+      p {{sliderWorksObject.desck}}
+    a(:href="sliderWorksObject.link").slider__link
       +icon("link", "slider___link-icon")
       span.slider__link-text Посмотреть сайт

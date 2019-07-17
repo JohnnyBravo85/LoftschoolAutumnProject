@@ -5,24 +5,37 @@
   justify-content: space-between;
   align-items: center;
   color: $text-color;
-  z-index: 20;
+  z-index: 35;
+
   @include desktop {
     margin-bottom: 23.69%;
   }
+
   @include tablets {
-    margin-bottom: 10%;
+    margin-bottom: 18.22%;
+  }
+
+  @include phones {
+    margin-bottom: 48.17%;
   }
 }
 
 .header__nav {
   width: 100%;
-  padding: 0 19.66%;
+  padding: 0 17%;
+
   @include laptop {
     padding: 0 5%;
   }
+
   @include tablets {
     display: none;
   }
+}
+
+.socials--header {
+  opacity: 1;
+  transition: opacity ease-in-out 2.5s;
 }
 
 .socials--header .socials__item {
@@ -30,4 +43,13 @@
   &:last-child {
     margin-right: 0;
   }
+  
+  @include phones {
+    display: none;
+  }
+}
+
+.socials--header--active {
+  visibility: hidden;
+  opacity: 0;
 }

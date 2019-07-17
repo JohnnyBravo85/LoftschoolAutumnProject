@@ -1,10 +1,18 @@
 .form {
-  margin-bottom: 11.65%;
   color: $text-color;
+
+  @include phones {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .form__title {
   margin-bottom: 6.56%;
+
+  @include tablets {
+    text-align: center;
+  }
 }
 
 .form__row {
@@ -12,6 +20,10 @@
   margin-bottom: 41px;
   &:nth-last-of-type(1) {
     margin-bottom: 60px;
+  }
+
+  @include phones {
+    flex-direction: column;
   }
 }
 
@@ -21,10 +33,12 @@
   }
 }
 
-.form__label-name, .form__label-email {
+.form__label-name,
+.form__label-email {
   width: 27.57%;
   display: flex;
   flex-direction: column;
+
   @include laptop {
     width: 100%;
   }
@@ -32,10 +46,16 @@
 
 .form__label-name {
   margin-right: 51px;
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 35px;
+  }
 }
 
 .form__label-message {
   width: 58.32%;
+
   @include laptop {
     width: 100%;
   }
@@ -60,7 +80,7 @@
   height: 30px;
   margin-right: 20px;
   fill: $form-icons-color;
-  transition: fill ease-in-out .5s;
+  transition: fill ease-in-out 0.5s;
 }
 
 .form__input {
@@ -75,7 +95,7 @@
   color: $text-color;
   order: 10;
   &::placeholder {
-    width: 50%;
+    width: 100%;
     color: $placeholder-text-color;
   }
 }
@@ -87,7 +107,7 @@
 .form__border {
   width: 100%;
   border-bottom: 2px solid $form-border-color;
-  transition: border-color ease-in-out .5s;
+  transition: border-color ease-in-out 0.5s;
   order: 20;
 }
 
@@ -99,4 +119,8 @@
   height: 80px;
   overflow: hidden;
   resize: none;
+
+  @include phones {
+    height: 150px;
+  }
 }

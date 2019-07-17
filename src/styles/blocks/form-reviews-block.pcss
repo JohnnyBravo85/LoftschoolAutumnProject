@@ -1,5 +1,5 @@
 .form-reviews-block {
-  padding-top: 10.14%;
+  padding: 10.14% 0;
   position: relative;
   color: $text-color;
   background-image: url("../images/content/autumn.jpg");
@@ -15,5 +15,14 @@
     display: block;
     background: url("../images/content/leave.png");
     background-repeat: no-repeat;
+
+    @include tablets {
+      top: -12%;
+      right: -35%;
+    }
+    
+    @include phones {
+      content: none;
+    }
   }
 }
