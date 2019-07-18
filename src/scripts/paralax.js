@@ -46,6 +46,5 @@ if(screen.width >= viewport) {
     const scroll = window.pageYOffset;
     paralaxScroll(scroll);
   });
-  console.log(screen.width);
 }
 

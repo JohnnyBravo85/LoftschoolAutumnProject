@@ -2,25 +2,25 @@ section.form
   h2.form__title.title Связаться со мной
   form.form__block.js-form
     .form__row
-      label.form__label-name.form__label.js-label
+      label.form__label-name.form__label.js-label.js-name
         h6.form__title-name.form__label-title.text Введите ваше имя
         .form__input-block
-          input(type="text" name="name" placeholder="Ковальчук Дмитрий" required).form__input-name.form__input.js-name
+          input(type="text" name="name" placeholder="Ковальчук Дмитрий" required).form__input-name.form__input
           +icon("avatar", "form__icon")
           .form__border
         .js-validate-error
-      label.form__label-email.form__label.js-label
+      label.form__label-email.form__label.js-label.js-email
         h6.form__title-email.form__label-title.text Введите ваш email
         .form__input-block
-          input(type="text" name="email" placeholder="loftschool@study.com" required).form__input-email.form__input.js-email
+          input(type="text" name="email" placeholder="loftschool@study.com" required).form__input-email.form__input
           +icon("envelope", "form__icon")
           .form__border
         .js-validate-error
     .form__row
-      label.form__label-message.form__label.js-label
+      label.form__label-message.form__label.js-label.js-textarea
         h6.form__title-message.form__label-title.text Сообщение к письму
         .form__input-block.form__input-block--align
-          textarea(name="textarea", required placeholder="Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса").form__input-message.form__input.js-textarea
+          textarea(name="textarea", required placeholder="Требуется ваша помощь в создании сайта.Интересуют сроки и цена вопроса").form__input-message.form__input
           +icon("message", "form__icon")
           .form__border
         .js-validate-error

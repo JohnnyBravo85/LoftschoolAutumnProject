@@ -401,44 +401,6 @@ this.$emit('abc')
 <@abc=""></>
 
 
-mixin form(className)
-    div(class=className)
-        form.form__container.j-form(action="" method="")
-            .form__row
-                .form__block.form__el.j-block
-                    .form__title Введите ваше имя
-                    label.form__input-wr.j-name
-                        +icon('user', 'form__icon')
-                        input.form__input#name(name="name"
-                        type="text"
-                        required)
-                    .form__error.j-error-block
-                .form__block.form__el.j-email.j-block
-                    .form__title Введите ваш email
-                    label.form__input-wr
-                        +icon('envelope', 'form__icon')
-                        input.form__input#email(name="email"
-                        type="email"
-                        required)
-                    .form__error.j-error-block
-            .form__row
-                .form__block.form__el.j-text.j-block
-                    .form__title Сообщение к письму
-                    label.form__input-wr
-                        +icon('message', 'form__icon')
-                        textarea.form__input.form__textarea#message(
-                        name="textarea"
-                        type="text"
-                        required
-                        rows="2")
-                    .form__error.j-error-block
-            button.form__submit.form__el.btn-gradient.j-submit-btn(type="submit") Отправить
-    script(type="text/x-template")#form-popup
-        .popup__overlay
-            .popup__container
-                .popup__content
-                button.popup__btn-close.btn-gradient
-
 class Validate {
     constructor() {
         this.form = 'j-form';
@@ -607,3 +569,41 @@ class Validate {
 }
 
 export default Validate;
+
+mixin form(className)
+    div(class=className)
+        form.form__container.j-form(action="" method="")
+            .form__row
+                .form__block.form__el.j-block
+                    .form__title Введите ваше имя
+                    label.form__input-wr.j-name
+                        +icon('user', 'form__icon')
+                        input.form__input#name(name="name"
+                        type="text"
+                        required)
+                    .form__error.j-error-block
+                .form__block.form__el.j-email.j-block
+                    .form__title Введите ваш email
+                    label.form__input-wr
+                        +icon('envelope', 'form__icon')
+                        input.form__input#email(name="email"
+                        type="email"
+                        required)
+                    .form__error.j-error-block
+            .form__row
+                .form__block.form__el.j-text.j-block
+                    .form__title Сообщение к письму
+                    label.form__input-wr
+                        +icon('message', 'form__icon')
+                        textarea.form__input.form__textarea#message(
+                        name="textarea"
+                        type="text"
+                        required
+                        rows="2")
+                    .form__error.j-error-block
+            button.form__submit.form__el.btn-gradient.j-submit-btn(type="submit") Отправить
+    script(type="text/x-template")#form-popup
+        .popup__overlay
+            .popup__container
+                .popup__content
+                button.popup__btn-close.btn-gradient Закрыть

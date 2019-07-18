@@ -33,6 +33,7 @@
 }
 
 .form__label {
+  position: relative;
   &:hover {
     border-color: $hover-color;
   }
@@ -135,8 +136,13 @@
 }
 
 .has-error {
+  position: absolute;
   display: block;
-  width: 200px;
-  height: 200px;
-  background-color: blue;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: 20px;
+  background: rgba(135, 206, 235, .95);
+  font-family: 'Marck Script', 'Pacifico', cursive;
 }
