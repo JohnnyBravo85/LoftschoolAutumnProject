@@ -5,11 +5,21 @@
   right: 0;
   bottom: 0;
   background-color: $paralax-bg;
+
+  @include paralax {
+    background: url("../images\content\paralax-layer-06.png") bottom no-repeat, 
+                url("../images\content\train-bridge.jpg") top no-repeat;
+    background-size: contain, cover;
+  }
 }
 
 .paralax__layer {
   width: 100%;
   will-change: transform;
+
+  @include paralax {
+    display: none;
+  }
 }
 
 .paralax__img {

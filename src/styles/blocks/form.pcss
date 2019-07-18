@@ -17,13 +17,18 @@
 
 .form__row {
   display: flex;
-  margin-bottom: 41px;
+  margin-bottom: 2.77%;
   &:nth-last-of-type(1) {
-    margin-bottom: 60px;
+    margin-bottom: 4.05%;
+
+    @include phones {
+      margin-bottom: 10%;
+    }
   }
 
   @include phones {
     flex-direction: column;
+    margin-bottom: 10%;
   }
 }
 
@@ -45,7 +50,7 @@
 }
 
 .form__label-name {
-  margin-right: 51px;
+  margin-right: 3.44%;
 
   @include phones {
     margin-right: 0;
@@ -123,4 +128,15 @@
   @include phones {
     height: 150px;
   }
+}
+
+.js-validate-error {
+  display: none;
+}
+
+.has-error {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: blue;
 }

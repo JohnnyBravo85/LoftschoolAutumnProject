@@ -4,12 +4,12 @@
       header.header-admin-section
         .container
           .header-admin
+            .header-admin__avatar
+              img(src="../images/content/avatar.jpg").header-admin__img
             .header-admin__owner-panel
-              .header-admin__avatar
-                img(src="../images/content/avatar.jpg").header-admin__img
               .header-admin__full-name Дмитрий Семёнов
               .header-admin__title Панель администрирования
-            .header-admin__logout Выйти
+              .header-admin__logout Выйти
       nav.nav-section
         .container
           nav.nav
@@ -22,7 +22,7 @@
           .about-section__main-block
             .about-section__title-and-add-form
               h2.about-section__title.admin-title Блок «Обо мне»
-              .about-section__add-form
+              .about-section__add-forms
                 button(type="button").about-section__add-form-btn +
                 p.about-section__add-form Добавить группу
             .about-section__forms
@@ -129,6 +129,7 @@
                 .works-section__load
                   p.works-section__load-text Перетащите или загрузите для загрузки изображения
                   button(type="submit").works-section__load-btn ЗАГРУЗИТЬ
+                p.work-section__change-preview Изменить превью
                 .works-section__edit-work-data
                   form.works-section__edit-work-form
                     label.works-section__name-label.works-section__label
@@ -306,17 +307,11 @@
 
 .header-admin {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.header-admin__owner-panel {
-  display: flex;
   align-items: center;
 }
 
 .header-admin__avatar {
-  margin-right: 20px;
+  margin-right: 1.75%;
   width: 44px;
   height: 44px;
 }
@@ -328,6 +323,17 @@
   border-radius: 50%;
 }
 
+.header-admin__owner-panel {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  @include phones {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 .header-admin__full-name {
   margin-right: 28px;
   font-size: 18px;
@@ -335,8 +341,13 @@
 }
 
 .header-admin__title {
+  flex: 1;
   font-size: 14px;
   opacity: 0.5;
+
+  @include phones {
+    display: none;
+  }
 }
 
 .header-admin__logout {
@@ -349,10 +360,13 @@
 
 .nav__list {
   display: flex;
+  @include phones {
+    justify-content: center;
+  }
 }
 
 .nav__item {
-  padding: 29px;
+  padding: 2.54%;
   &:hover{
     font-weight: 600;
     color: #383bcf;
@@ -375,6 +389,12 @@
 .about-section__title-and-add-form {
   margin-bottom: 5.27%;
   display: flex;
+  align-items: center;
+
+  @include phones {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .admin-title {
@@ -383,12 +403,20 @@
 }
 
 .about-section__title {
-  margin-right: 60px;
+  margin-right: 5.26%;
+
+  @include phones {
+    margin-right: 0;
+    margin-bottom: 5.5%;
+  }
 }
 
-.about-section__add-form {
+.about-section__add-forms {
   display: flex;
-  align-items: center;
+
+  @include phones {
+    margin-bottom: 5.5%;
+  }
 }
 
 .about-section__add-form-btn {
@@ -414,10 +442,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px 32px;
+
+  @include phones {
+    grid-template-columns: 1fr;
+  }
 }
 
 .about-section__form {
-  padding: 28px;
+  padding: 5.05%;
   height: 440px;
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
   background-color: #fff;
@@ -500,7 +532,6 @@
 }
 
 .about-section__skill-persent-input {
-  margin-right: 25px;
   width: 10%;
   color: rgba(65, 76, 99, 0.7);
 }
@@ -541,11 +572,17 @@
   padding-left: 10px;
   width: 38%;
   color: rgba(55, 62, 66, 0.5);
+  @include tablets {
+    width: 54%;
+  }
 }
 
 .about-section__skill-value-input-add {
   width: 10%;
   text-align: center;
+  @include tablets {
+    width: 14%;
+  }
 }
 
 .about-section__skill-persent-input-add {
@@ -553,6 +590,10 @@
   width: 5%;
   text-align: left;
   color: rgba(65, 76, 99, 0.7);
+  @include tablets {
+    width: 9%;
+    margin-right: 5px;
+  }
 }
 
 .about-section__add-skill-btn {
@@ -594,7 +635,12 @@
 
 .works-section__edit-work {
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 3.63%;
+
+  @include tablets {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .works-section__load {
@@ -609,6 +655,17 @@
   align-self: flex-start;
   background-color: #dee4ed;
   border: dashed 1px #a1a1a1;
+
+  @include tablets {
+    width: 75%;
+    margin-right: 0;
+    margin-bottom: 4%;
+    align-self: center;
+  }
+
+  @include phones {
+    width: 95%;
+  }
 }
 
 .works-section__load-text {
@@ -629,8 +686,27 @@
   background-image: linear-gradient(to right, #006aed, #3f35cb);
 }
 
+.work-section__change-preview {
+  display: none;
+
+  @include tablets {
+    display: block;
+    color: #383bcf;
+    font-weight: bold;
+    margin-bottom: 4%;
+  }
+}
+
 .works-section__edit-work-data {
   width: 48%;
+
+  @include tablets {
+    width: 75%;
+  }
+  
+  @include phones {
+    width: 95%;
+  }
 }
 
 .works-section__edit-work-form {
@@ -677,7 +753,7 @@
 
 .works-section__tags-item {
   margin-right: 9px;
-  padding: 8px 19px;
+  padding: 1.55% 3.75%;
   display: flex;
   align-items: center;
   border-radius: 14.9px;
@@ -701,6 +777,10 @@
 .works-section__btn-block {
   display: flex;
   justify-content: flex-end;
+
+  @include tablets {
+    justify-content: center;
+  }
 }
 
 .works-section__cansel-btn {
@@ -721,6 +801,13 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include phones {
+    grid-template-columns: 1fr;
+  }
 }
 
 .works-section__works-item--add {
@@ -729,6 +816,12 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to right, #006aed, #3f35cb);
+
+  @include phones {
+    padding: 7%;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }
 
 .works-section__add-work-btn {
@@ -740,6 +833,13 @@
   border: 2px solid #fff;
   border-radius: 50%;
   color: #fff;
+
+  @include phones {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
 }
 
 .works-section__add-work-text {
@@ -749,6 +849,10 @@
   text-align: center;
   line-height: 1.67;
   color: #fff;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .works-section__works-item {
@@ -846,6 +950,15 @@
 .reviews-section__add-block {
   padding-right: 18.25%;
   display: flex;
+
+  @include tablets {
+    padding-right: 0;
+  }
+
+  @include phones {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .reviews-section__add-photo-block {
@@ -854,15 +967,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include phones {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
 }
 
 .reviews-section__add-photo {
   margin-bottom: 27px;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   background: svg-load("user.svg", fill=#fff, width=100px, height=112px;) center center no-repeat;
   background-color: #dee4ed;
+
+  @include tablets {
+    width: 120px;
+    height: 120px;
+  }
 }
 
 .reviews-section__photo-text {
@@ -874,21 +998,42 @@
   width: 70%;
   display: flex;
   flex-direction: column;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .reviews-section__add-data-row {
   width: 100%;
   display: flex;
   margin-bottom: 30px;
+  
+  @include tablets {
+    flex-direction: column;
+  }
 }
 
 .reviews-section__label {
   width: 48%;
   border-bottom: 1px solid #414c63;
+
+  @include tablets {
+    width: 70%;
+  }
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .reviews-section__label-name {
   margin-right: 30px;
+
+  @include tablets {
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
 }
 
 .reviews-section__label-title {
@@ -922,6 +1067,10 @@
   padding-right: 18.25%;
   display: flex;
   justify-content: flex-end;
+
+  @include tablets {
+    padding-right: 0;
+  }
 }
 
 .reviews-section__cansel-btn {
@@ -941,6 +1090,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
+
+  @include tablets {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include phones {
+    grid-template-columns: 1fr;
+  }
 }
 
 .reviews-section__review-item--add {
@@ -949,6 +1106,12 @@
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(to right, #006aed, #3f35cb);
+
+  @include phones {
+    padding: 7%;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }
 
 .reviews-section__add-review-btn {
@@ -960,6 +1123,13 @@
   font-weight: 300;
   color: #fff;
   border: 2px solid #fff;
+
+  @include phones {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 0;
+    font-size: 24px;
+  }
 }
 
 .reviews-section__add-review-text {
@@ -968,6 +1138,10 @@
   font-weight: bold;
   text-align: center;
   color: #fff;
+
+  @include phones {
+    width: 100%;
+  }
 }
 
 .reviews-section__review-item {

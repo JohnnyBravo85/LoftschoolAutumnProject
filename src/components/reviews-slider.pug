@@ -3,9 +3,9 @@ script(type="text/x-template")#reviews-slider
     .reviews__slider-panel
       h2.reviews__title.title Что обо мне говорят
       .reviews__slider-conrol
-        button(type="button" @click="previous()").reviews__prev-button.reviews__buttons
+        button(type="button" @click="previous()" ref="prev").reviews__prev-button.reviews__buttons
           +icon("short-arrow", "reviews__prev-icon reviews__icon")
-        button(type="button" @click="next()").reviews__next-button.reviews__buttons
+        button(type="button" @click="next()" ref="next").reviews__next-button.reviews__buttons
           +icon("short-arrow", "reviews__next-icon reviews__icon")
     .reviews__slider-content
       flickity(ref="flickity" :options="flickityOptions")

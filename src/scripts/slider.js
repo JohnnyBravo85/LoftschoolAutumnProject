@@ -83,7 +83,7 @@ new Vue ({
   },
   watch: {
     currentWorkIndex(value) {
-
+      
     }
   },
   methods: {
