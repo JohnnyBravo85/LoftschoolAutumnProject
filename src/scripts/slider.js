@@ -83,7 +83,13 @@ new Vue ({
   },
   watch: {
     currentWorkIndex(value) {
-      
+      if(value === this.sliderWorksArray.length) {
+        this.currentWorkIndex = 0;
+      }
+
+      if(value === -1) {
+        this.currentWorkIndex = this.sliderWorksArray.length - 1;
+      }
     }
   },
   methods: {
@@ -95,10 +101,10 @@ new Vue ({
       });
     },
     slideWorks(direction) {
-      if(direction === 'next' && this.currentWorkIndex < this.sliderWorksArray.length - 1) {
+      if(direction === 'next') {
         this.currentWorkIndex++
       }
-      if(direction === 'prev' && this.currentWorkIndex > 0) {
+      if(direction === 'prev') {
         this.currentWorkIndex--
       }
     },
