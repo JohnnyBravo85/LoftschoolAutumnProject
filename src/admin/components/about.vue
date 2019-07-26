@@ -6,102 +6,45 @@
           h2.about-section__title.admin-title Блок «Обо мне»
           button(type="button").about-section__add-forms
             div.about-section__add-form-btn +
-            p.about-section__add-form Добавить группу
-        .about-section__forms
-          form.about-section__form.about-section__form-add
-            .about-section__skill-group.about-section__skill-group-add
-              input(value="Название новой группы").about-section__group-name-input.about-section__form-input.about-section__group-name-input-add
-              .about-section__confirm-del
-                button(type="button").about-section__confirm
-                button(type="button").about-section__del
-            .about-section__add-skill
-              input(value="Новый навык").about-section__skill-name-input-add.about-section__form-input-add
-              input(value="100").about-section__skill-value-input-add.about-section__form-input-add
-              input(value="%" readonly="readonly").about-section__skill-persent-input-add.about-section__form-input-add
-              button(type="button").about-section__add-skill-btn +
-          form.about-section__form
-            .about-section__skill-group
-              input(value="Workflow").about-section__group-name-input.about-section__form-input
-              .about-section__confirm-del
-                button(type="button").about-section__confirm
-                button(type="button").about-section__del
-            .about-section__skills
-              ul.about-section__skills-list
-                li.about-section__skills-item
-                  input(value="GIT").about-section__skill-name-input.about-section__form-input
-                  input(value="80").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="Terminal").about-section__skill-name-input.about-section__form-input
-                  input(value="30").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="Gulp").about-section__skill-name-input.about-section__form-input
-                  input(value="80").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="Webpack").about-section__skill-name-input.about-section__form-input
-                  input(value="25").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-            .about-section__add-skill
-              input(value="Новый навык").about-section__skill-name-input-add.about-section__form-input-add
-              input(value="100").about-section__skill-value-input-add.about-section__form-input-add
-              input(value="%" readonly="readonly").about-section__skill-persent-input-add.about-section__form-input-add
-              button(type="button").about-section__add-skill-btn +
-          form.about-section__form
-            .about-section__skill-group
-              input(value="Frontend").about-section__group-name-input.about-section__form-input
-              .about-section__confirm-del
-                button(type="button").about-section__confirm
-                button(type="button").about-section__del
-            .about-section__skills
-              ul.about-section__skills-list
-                li.about-section__skills-item
-                  input(value="HTML5").about-section__skill-name-input.about-section__form-input
-                  input(value="90").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="CSS3").about-section__skill-name-input.about-section__form-input
-                  input(value="70").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="JavaScript").about-section__skill-name-input.about-section__form-input
-                  input(value="30").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-                li.about-section__skills-item
-                  input(value="Jquery и Vue.js").about-section__skill-name-input.about-section__form-input
-                  input(value="15").about-section__skill-value-input.about-section__form-input
-                  input(value="%" readonly="readonly").about-section__skill-persent-input.about-section__form-input
-                  .about-section__write-erase
-                    button(type="button").about-section__write
-                    button(type="button").about-section__erase
-            .about-section__add-skill
-              input(value="Новый навык").about-section__skill-name-input-add.about-section__form-input-add
-              input(value="100").about-section__skill-value-input-add.about-section__form-input-add
-              input(value="%" readonly="readonly").about-section__skill-persent-input-add.about-section__form-input-add
-              button(type="button").about-section__add-skill-btn +
+            button(type="button").about-section__add-form Добавить группу
+        skillGroup(
+          :categories="categories"
+          )
+        pre {{categories}}
+        pre {{skills}}
 </template>
+
+<script>
+
+import { mapActions, mapState } from 'vuex';
+import $axios from 'axios'
+
+export default {
+  components : {
+    skillGroup: () => import('./skill-group')
+  },
+  methods: {
+    ...mapActions('categories', ['getCategories']),
+    ...mapActions('skills', ['getSkills']),
+  },
+  computed: {
+    ...mapState('categories', {
+      categories: state => state.categories
+    }),
+    ...mapState('skills', {
+      skills: state => state.skills
+    })
+  },
+  async created() {
+    try {
+      this.getCategories();
+      this.getSkills();
+    } catch (error) {
+
+    }
+  }
+}
+</script>
 
 <style lang="pcss">
 @import url("../../../node_modules/normalize.css/normalize.css");

@@ -24,6 +24,13 @@ const routes = [
     meta: {
       title: "Блок «Отзывы»"
     }
+  },
+  {
+    path: "/login",
+    component: () => import("../components/login.vue"),
+    meta: {
+      title: "Блок «Логин»"
+    }
   }
 ];
 

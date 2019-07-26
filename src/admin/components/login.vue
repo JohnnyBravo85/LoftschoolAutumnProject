@@ -20,24 +20,30 @@
 
 <script>
 
-import axios from '@/requests';
+import $axios from '@/requests';
 
 export default {
   data() {
     return {
       user: {
-        name: '',
-        password: ''
+        name: 'JohnnyBravo240719',
+        password: '123456789'
       }
     }
   },
   methods: {
-      async login() {
-      console.log("!!!")
-      const response = await $axios.post('/login', this.user);
-      console.log(response)
-    }
-  }
+   async login() {
+     try {
+       const {data: {token}} = await $axios.post('/login', this.user);
+       localStorage.setItem('token', token);
+       $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+       this.$router.push('/');
+       console.log(token)
+     } catch(error) {
+
+     }
+   }
+ }
 }
 
 </script>

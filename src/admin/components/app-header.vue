@@ -7,7 +7,10 @@
         .header-admin__owner-panel
           .header-admin__full-name Дмитрий Семёнов
           .header-admin__title Панель администрирования
-          button(type="button").header-admin__logout Выйти
+          router-link(
+              tag="button"
+              to="/login"
+              ).header-admin__logout Выйти
 </template>
 
 <style lang="pcss">

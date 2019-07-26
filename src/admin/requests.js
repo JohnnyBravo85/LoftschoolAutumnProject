@@ -1,9 +1,12 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import axios from "axios";
-import VueAxios from 'vue-axios'
+// import VueAxios from 'vue-axios'
 
-Vue.use(VueAxios, axios);
+// Vue.use(VueAxios, axios);
 
-axios.defaults.baseURL = 'http://webdev-api.loftschool.com';
+const token = localStorage.getItem('token');
+
+axios.defaults.baseURL = "https://webdev-api.loftschool.com";
+axios.defaults.headers["Authorization"] = `Bearer ${token}`;
 
 export default axios;

@@ -1,6 +1,5 @@
 <template lang="pug">
   .maincontent
-    login
     appHeader
     appNav
     router-view
