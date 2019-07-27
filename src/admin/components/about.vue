@@ -9,9 +9,10 @@
             button(type="button").about-section__add-form Добавить группу
         skillGroup(
           :categories="categories"
+          :skills="skills"
           )
-        pre {{categories}}
-        pre {{skills}}
+        //- pre {{categories}}
+        //- pre {{skills}}
 </template>
 
 <script>
@@ -25,7 +26,7 @@ export default {
   },
   methods: {
     ...mapActions('categories', ['getCategories']),
-    ...mapActions('skills', ['getSkills']),
+    ...mapActions('skills', ['getSkills'])
   },
   computed: {
     ...mapState('categories', {
@@ -37,9 +38,13 @@ export default {
   },
   async created() {
     try {
-      this.getCategories();
-      this.getSkills();
-    } catch (error) {
+      await this.getCategories();
+    } catch(error) {
+
+    }
+    try {
+      await this.getSkills();
+    } catch(error) {
 
     }
   }
