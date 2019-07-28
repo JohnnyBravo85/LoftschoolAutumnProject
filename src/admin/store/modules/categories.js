@@ -9,6 +9,9 @@ export default {
     },
     ADD_CATEGORY(state, category) {
       state.categories.push(category);
+    },
+    DELETE_CATEGORY(state, removeCategoryId) {
+      state.categories = state.categories.filter(category => category.id !== removeCategoryId);
     }
   },
   actions: {
@@ -20,6 +23,14 @@ export default {
         throw new Error(
           error.responce.data.error || error.responce.data.message
         )
+      }
+    },
+    async removeCategory({commit}, categoryId) {
+      try {
+        const responce = await this.$axios.delete(`/categories/${categoryId}`);
+        commit('DELETE_CATEGORY', categoryId);
+      } catch(error) {
+        
       }
     },
     async getCategories({commit}) {

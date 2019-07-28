@@ -6,13 +6,19 @@
           h2.about-section__title.admin-title Блок «Обо мне»
           button(type="button").about-section__add-forms
             div.about-section__add-form-btn +
-            button(type="button").about-section__add-form Добавить группу
-        skillGroup(
-          :categories="categories"
-          :skills="skills"
+            button(type="button").about-section__add-form Добавить группу   
+        ul.about-section__forms
+          li.about-section__form-outer
+            skillGroupAdd(
+              :categories="categories"
+            )
+          li.about-section__form-outer(
+            v-for="category in categories"
           )
-        //- pre {{categories}}
-        //- pre {{skills}}
+            skillGroup(
+              :category="category"
+              :skills = "filterSkillsByCategoryId(category.id)"
+              )
 </template>
 
 <script>
@@ -21,12 +27,17 @@ import { mapActions, mapState } from 'vuex';
 import $axios from 'axios'
 
 export default {
+
   components : {
+    skillGroupAdd: () => import('./skill-group-add'),
     skillGroup: () => import('./skill-group')
   },
   methods: {
     ...mapActions('categories', ['getCategories']),
-    ...mapActions('skills', ['getSkills'])
+    ...mapActions('skills', ['getSkills']),
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId)
+    }
   },
   computed: {
     ...mapState('categories', {
@@ -196,6 +207,15 @@ export default {
 }
 
 .about-section__skills-item {
+  /* margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  &:last-child{
+    margin-bottom: 0;
+  } */
+}
+
+.about-section__skills-item-iner {
   margin-bottom: 25px;
   display: flex;
   align-items: center;
