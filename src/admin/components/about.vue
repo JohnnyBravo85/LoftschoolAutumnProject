@@ -17,6 +17,7 @@
           )
             skillGroup(
               :category="category"
+              :key="category.id"
               :skills = "filterSkillsByCategoryId(category.id)"
               )
 </template>

@@ -11,12 +11,9 @@
           type="button" 
           @click="addNewCategory"
         ).about-section__confirm
-        button(type="button").about-section__del
-    .about-section__add-skill
-      input(value="Новый навык").about-section__skill-name-input-add.about-section__form-input-add
-      input(value="101").about-section__skill-value-input-add.about-section__form-input-add
-      input(value="%" readonly="readonly").about-section__skill-persent-input-add.about-section__form-input-add
-      button(type="button").about-section__add-skill-btn +
+        button(
+          type="button"
+        ).about-section__del
 </template>
 
 <script>

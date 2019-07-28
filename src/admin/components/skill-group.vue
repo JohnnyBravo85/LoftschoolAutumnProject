@@ -1,15 +1,38 @@
 <template lang="pug">
   form.about-section__form
-    .about-section__skill-group
+    .about-section__skill-group(
+      v-if="editCategoryModeOn === false"
+    )
       input(
         :value="category.category"
+        readonly
       ).about-section__group-name-input.about-section__form-input
-      button(type="button") Категория
-      .about-section__confirm-del
-        button(type="button").about-section__confirm
+      div Категория
+      .about-section__write-erase
+        button(
+          type="button"
+          @click="editCategoryModeOn = true"
+        ).about-section__write
         button(
           type="button"
           @click="removeThisCategory"
+        ).about-section__erase
+    .about-section__skill-group(
+      v-else
+    )
+      input(
+        placeholder="Название"
+        v-model="editedCategory.title"
+      ).about-section__group-name-input.about-section__form-input
+      div Категория
+      .about-section__confirm-del
+        button(
+          type="button"
+          @click="editThisCategory"
+        ).about-section__confirm
+        button(
+          type="button"
+          @click="editCategoryModeOn = false"
         ).about-section__del
     .about-section__skills
       ul.about-section__skills-list
@@ -57,7 +80,9 @@ export default {
         percent: '',
         category: this.category.id
       },
-      skillFormIsBlocked: false
+      skillFormIsBlocked: false,
+      editCategoryModeOn: false,
+      editedCategory: {...this.category}
     }
   },
   methods: {
@@ -74,10 +99,18 @@ export default {
         this.skillFormIsBlocked = false;
       }
     },
-    ...mapActions('categories', ['removeCategory']),
+    ...mapActions('categories', ['removeCategory', 'editCategory']),
     async removeThisCategory() {
       try {
-        await this.removeCategory(this.category.id)
+        await this.removeCategory(this.category.id);
+      } catch(error) {
+
+      }
+    },
+    async editThisCategory() {
+      try {
+        await this.editCategory(this.editedCategory);
+        this.editCategoryModeOn = false;
       } catch(error) {
 
       }
