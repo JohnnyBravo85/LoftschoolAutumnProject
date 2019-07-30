@@ -3,83 +3,74 @@
     .container
       .reviews-section__main-block
         h2.reviews-section__title.admin-title Блок «Отзывы»
-        .reviews-section__edit-form
-          h3.reviews-section__form-title.edit-title Новый отзыв
-          .reviews-section__add-block
-            .reviews-section__add-photo-block
-              button(type="button").reviews-section__add-photo
-              p.reviews-section__photo-text Добавить фото
-            form.reviews-section__add-form-data-block
-              .reviews-section__add-data-row
-                label.reviews-section__label-name.reviews-section__label
-                  h3.reviews-section__title-name.reviews-section__label-title Имя автора
-                  input(value="Ковальчук Дмитрий").reviews-section__input-name.reviews-section__input
-                label.reviews-section__label-dignity.reviews-section__label
-                  h3.reviews-section__title-dignity.reviews-section__label-title Титул автора
-                  input(value="Основатель LoftSchool").reviews-section__input-dignity.reviews-section__input
-              .reviews-section__add-data-textarea
-                h3.reviews-section__title-review.reviews-section__label-title Отзыв
-                textarea(placeholder="Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!").reviews-section__textarea-review
-          .reviews-section__btn-block
-            button(type="submit").reviews-section__cansel-btn Отмена
-            button(type="submit").reviews-section__confirm-btn Сохранить
-      .reviews-section__reviews-list
-        li.reviews-section__review-item.reviews-section__review-item--add
+          reviewAdd(
+            v-if="addCategoryMode === true"
+            @cancelLoad="addCategoryMode = false"
+          )
+          reviewEdit(
+            v-if="editCategoryMode === true"
+            @cancelEditLoad="editCategoryMode = false"
+          )
+      ul.reviews-section__reviews-list
+        li.reviews-section__review-item.reviews-section__review-item--add(
+          @click="confirmLoad"
+        )
           button(type="button").reviews-section__add-review-btn +
           p.reviews-section__add-review-text Добавить работу
-        li.reviews-section__review-item
-          .reviews-section__review-photo-block
-            .reviews-section__photo
-              img(src="./../../images/content/vova.jpg", alt="").reviews-section__photo-img
-            .reviews-section__review-text-block
-              .reviews-section__review-hero-title.edit-title Владимир Сабанцев
-              .reviews-section__review-hero-stuff Преподаватель
-          p.reviews-section__review-comment Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-          .reviews-section__review-content-btn-block
-              button(type="button").edit-btn.edit-btns
-                .reviews-section__work-edit-text Править
-              button(type="button").del-btn.edit-btns
-                .reviews-section__work-del-text Удалить
-        li.reviews-section__review-item
-          .reviews-section__review-photo-block
-            .reviews-section__photo
-              img(src="./../../images/content/dima.jpg", alt="").reviews-section__photo-img
-            .reviews-section__review-text-block
-              .reviews-section__review-hero-title.edit-title Ковальчук Дмитрий
-              .reviews-section__review-hero-stuff Основатель Loftschool
-          p.reviews-section__review-comment Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .reviews-section__review-content-btn-block
-              button(type="button").edit-btn.edit-btns
-                .reviews-section__work-edit-text Править
-              button(type="button").del-btn.edit-btns
-                .reviews-section__work-del-text Удалить
-        li.reviews-section__review-item
-          .reviews-section__review-photo-block
-            .reviews-section__photo
-              img(src="./../../images/content/vova.jpg", alt="").reviews-section__photo-img
-            .reviews-section__review-text-block
-              .reviews-section__review-hero-title.edit-title Владимир Сабанцев
-              .reviews-section__review-hero-stuff Преподаватель
-          p.reviews-section__review-comment Этот код выдержит любые испытания. Только пожалуйста, не загружайте сайт на слишком старых браузерах
-          .reviews-section__review-content-btn-block
-              button(type="button").edit-btn.edit-btns
-                .reviews-section__work-edit-text Править
-              button(type="button").del-btn.edit-btns
-                .reviews-section__work-del-text Удалить
-        li.reviews-section__review-item
-          .reviews-section__review-photo-block
-            .reviews-section__photo
-              img(src="./../../images/content/dima.jpg", alt="").reviews-section__photo-img
-            .reviews-section__review-text-block
-              .reviews-section__review-hero-title.edit-title Ковальчук Дмитрий
-              .reviews-section__review-hero-stuff Основатель Loftschool
-          p.reviews-section__review-comment Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей!
-          .reviews-section__review-content-btn-block
-              button(type="button").edit-btn.edit-btns
-                .reviews-section__work-edit-text Править
-              button(type="button").del-btn.edit-btns
-                .reviews-section__work-del-text Удалить
+        li.reviews-section__review-item(
+          v-for="review in reviews"
+        )
+          reviewItem(
+            :review="review"
+            @editReview="editCategoryMode = true"
+          )
 </template>
+
+<script>
+
+import { mapActions, mapState } from 'vuex';
+import $axios from 'axios';
+
+export default {
+
+  components : {
+    reviewAdd: () => import('./review-add'),
+    reviewEdit: () => import('./review-edit'),
+    reviewItem: () => import('./review-item')
+  },
+  data() {
+    return {
+      addCategoryMode: false,
+      editCategoryMode: false,
+      reviewEdit: {}
+    }
+  },
+  methods: {
+    ...mapActions('reviews', ['getReviews']),
+    editCurrentReview(editReviewData) {
+      this.editCategoryMode = true;
+    },
+    confirmLoad() {
+      this.addCategoryMode = true;
+    }
+  },
+  computed: {
+    ...mapState('reviews', {
+      reviews: state => state.reviews
+    }),
+  },
+  async created() {
+    try {
+      this.getReviews();
+    } catch (error) {
+      console.log(error.message)
+    }
+  },
+  mounted() {
+  }
+}
+
+</script>
 
 <style lang="pcss">
 @import url("../../../node_modules/normalize.css/normalize.css");
@@ -147,8 +138,8 @@
   margin-bottom: 27px;
   width: 150px;
   height: 150px;
-  border-radius: 50%;
-  background: svg-load("user.svg", fill=#fff, width=100px, height=112px;) center center no-repeat;
+  border-radius: 100%;
+  background: svg-load("user.svg", fill=#fff, width=150px, height=150px;) top center no-repeat;
   background-color: #dee4ed;
 
   @include tablets {
@@ -157,7 +148,23 @@
   }
 }
 
+.reviews-section__edit-this-photo {
+  color: transparent;
+  width: 49%;
+  @include desktop {
+    width: 61%;
+  }
+  @include tablets {
+    width: 71%;
+  }
+  @include phones {
+    width: 47%;
+  }
+  
+}
+
 .reviews-section__photo-text {
+  margin-bottom: 10%;
   font-weight: 600;
   color: #383bcf;
 }

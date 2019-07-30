@@ -52,20 +52,23 @@ export default {
     }
   },
   methods: {
-    ...mapActions('skills', ['removeSkill', 'editSkill']),
+    ...mapActions('skills', ['removeSkill', 'editSkill', 'getSkills']),
     async removeThisSkill() {
       try {
         await this.removeSkill(this.skill.id);
       } catch(error) {
-
+          console.log(error.message)
       }
     },
     async editThisSkill() {
       try {
         await this.editSkill(this.editedSkill);
+        await this.getSkills();
+        this.editedSkill.title = '';
+        this.editedSkill.percent = '';
         this.editSkillModeOn = false;
       } catch(error) {
-
+          console.log(error.message)
       }
     }
   }

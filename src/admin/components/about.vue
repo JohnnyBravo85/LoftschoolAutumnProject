@@ -6,18 +6,23 @@
           h2.about-section__title.admin-title Блок «Обо мне»
           button(type="button").about-section__add-forms
             div.about-section__add-form-btn +
-            button(type="button").about-section__add-form Добавить группу   
+            button(
+              type="button"
+              @click="editCardModeOn = true"
+            ).about-section__add-form Добавить группу   
         ul.about-section__forms
-          li.about-section__form-outer
+          li.about-section__form-outer(
+            v-if="editCardModeOn === true"
+          )
             skillGroupAdd(
               :categories="categories"
+              :editCardModeOn="editCardModeOn"
             )
           li.about-section__form-outer(
             v-for="category in categories"
           )
             skillGroup(
               :category="category"
-              :key="category.id"
               :skills = "filterSkillsByCategoryId(category.id)"
               )
 </template>
@@ -25,13 +30,19 @@
 <script>
 
 import { mapActions, mapState } from 'vuex';
-import $axios from 'axios'
+import $axios from 'axios';
+import { eventBus } from '../main.js';
 
 export default {
 
   components : {
     skillGroupAdd: () => import('./skill-group-add'),
     skillGroup: () => import('./skill-group')
+  },
+  data () {
+    return {
+      editCardModeOn: false
+    }
   },
   methods: {
     ...mapActions('categories', ['getCategories']),
@@ -52,18 +63,24 @@ export default {
     try {
       await this.getCategories();
     } catch(error) {
-
+        console.log(error.message)
     }
     try {
       await this.getSkills();
     } catch(error) {
-
+        console.log(error.message)
     }
+  },
+  mounted() {
+    eventBus.$on('falseMode', boolean => {
+      this.editCardModeOn = boolean.flag
+    })
   }
 }
 </script>
 
 <style lang="pcss">
+
 @import url("../../../node_modules/normalize.css/normalize.css");
 @import url("../../styles/mixins.pcss");
 @import url("../../styles/layout/base.pcss");

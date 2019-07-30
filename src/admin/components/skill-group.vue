@@ -4,7 +4,7 @@
       v-if="editCategoryModeOn === false"
     )
       input(
-        :value="category.category"
+        :value="this.category.category"
         readonly
       ).about-section__group-name-input.about-section__form-input
       div Категория
@@ -94,25 +94,27 @@ export default {
         this.createSkill.title = "";
         this.createSkill.percent = "";
       } catch(error) {
-
+          console.log(error.message)
       } finally {
         this.skillFormIsBlocked = false;
       }
     },
-    ...mapActions('categories', ['removeCategory', 'editCategory']),
+    ...mapActions('categories', ['removeCategory', 'editCategory', 'getCategories']),
     async removeThisCategory() {
       try {
         await this.removeCategory(this.category.id);
       } catch(error) {
-
+          console.log(error.message)
       }
     },
     async editThisCategory() {
       try {
         await this.editCategory(this.editedCategory);
+        await this.getCategories();
+        this.editedCategory.title = "";
         this.editCategoryModeOn = false;
       } catch(error) {
-
+          console.log(error.message)
       }
     }
   }

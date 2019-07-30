@@ -1,11 +1,23 @@
 <template lang="pug">
-  .maincontent
-    appHeader
-    appNav
-    router-view
+  .wrapper-admin
+    .logincontent(
+      v-if="isLogin === true"
+      @click="a"
+    )
+      login(
+        :isLogin="isLogin"
+      )
+    .maincontent(
+      v-else
+    )
+      appHeader
+      appNav
+      router-view
 </template>
 
 <script>
+
+import { eventBus } from './main.js';
 
 export default {
   name: 'app',
@@ -16,6 +28,21 @@ export default {
     works: () => import('./components/works.vue'),
     reviews: () => import('./components/reviews.vue'),
     login: () => import('./components/login.vue')
+  },
+  data() {
+    return {
+      isLogin: false
+    }
+  },
+  methods: {
+    a() {
+      console.log(this.isLogin)
+    }
+  }, 
+  created() {
+    eventBus.$on('loginTrueMode', boolean => {
+      this.isLogin = boolean.flag
+    })
   }
 }
 

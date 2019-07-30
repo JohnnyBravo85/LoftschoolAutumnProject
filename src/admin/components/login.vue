@@ -28,21 +28,32 @@ export default {
       user: {
         name: 'JohnnyBravo240719',
         password: '123456789'
-      }
+      },
     }
   },
   methods: {
-   async login() {
-     try {
-       const {data: {token}} = await $axios.post('/login', this.user);
-       localStorage.setItem('token', token);
-       $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
-       this.$router.push('/');
-       console.log(token)
-     } catch(error) {
+    async login() {
+      try {
+        const {data: {token}} = await $axios.post('/login', this.user);
+        localStorage.setItem('token', token);
+        $axios.defaults.headers["Authorization"] = `Bearer ${token}`;
+        this.$router.push('/');
+        console.log(token);
+        
+      } catch(error) {
 
-     }
-   }
+      }
+    },
+    loginModeTrue() {
+      eventBus.$emit('loginTrueMode', {
+        flag: true
+      });
+    },
+    loginModeFalse() {
+      eventBus.$emit('loginFalseMode', {
+        flag: false
+      });
+    }
  }
 }
 

@@ -8,7 +8,7 @@ export default {
       state.categories = categories;
     },
     ADD_CATEGORY(state, category) {
-      state.categories.push(category);
+      state.categories.unshift(category);
     },
     DELETE_CATEGORY(state, removeCategoryId) {
       state.categories = state.categories.filter(category => category.id !== removeCategoryId);

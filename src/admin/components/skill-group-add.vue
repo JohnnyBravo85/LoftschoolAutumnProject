@@ -13,25 +13,28 @@
         ).about-section__confirm
         button(
           type="button"
+          @click="editCardModeOFalse"
         ).about-section__del
 </template>
 
 <script>
 
 import { mapActions } from 'vuex';
+import { eventBus } from '../main';
 
 export default {
   
   props: {
     categories: Array,
-    category: Object
+    category: Object,
+    editCardModeOn: Boolean
   },
   data () {
     return {
       createCategory: {
         title: ''
       },
-      groupFormIsBlocked: false
+      groupFormIsBlocked: false,
     }
   },
   methods: {
@@ -40,12 +43,18 @@ export default {
       this.groupFormIsBlocked = true;
       try {
         await this.addCategory(this.createCategory);
-        this.createCategory.title = ""
+        this.createCategory.title = "";
+        this.editCardModeOFalse();
       } catch(error) {
-
+          console.log(error.message)
       } finally {
         this.groupFormIsBlocked = false;
       }
+    },
+    editCardModeOFalse() {
+      eventBus.$emit('falseMode', {
+        flag: false
+      })
     }
   }
 }
