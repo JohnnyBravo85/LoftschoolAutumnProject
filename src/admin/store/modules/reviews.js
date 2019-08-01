@@ -9,7 +9,7 @@ export default {
       state.reviews.push(review);
     },
     DELETE_REVIEW(state, reviewId) {
-      state.reviews = state.reviews.filter(review => review.id != reviewId);
+      state.reviews = state.reviews.filter(review => review.id !== reviewId);
     },
     EDIT_REVIEW(state, editReview) {
       state.reviews = state.reviews.map(review => {

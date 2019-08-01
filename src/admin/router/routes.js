@@ -1,9 +1,4 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-
-Vue.use(VueRouter);
-
-const routes = [
+export default [
   {
     path: "/",
     component: () => import("../components/about.vue"),
@@ -29,9 +24,7 @@ const routes = [
     path: "/login",
     component: () => import("../components/login.vue"),
     meta: {
-      title: "Блок «Логин»"
+      public: true
     }
   }
 ];
-
-export default new VueRouter({routes});

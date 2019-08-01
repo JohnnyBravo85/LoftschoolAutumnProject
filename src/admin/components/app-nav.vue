@@ -3,22 +3,29 @@
     .container
       nav.nav
         ul.nav__list
-          li.nav__item
+          li.nav__item(v-for="tab in tabs")
             router-link(
               tag="button"
-              to="/"
-              ).nav__button Обо мне
-          li.nav__item
-            router-link(
-              tag="button"
-              to="/works"
-              ).nav__button Работы
-          li.nav__item
-            router-link(
-              tag="button"
-              to="/reviews"
-              ).nav__button Отзывы
+              :to="tab.href"
+              ).nav__button {{tab.title}}
 </template>
+
+<script>
+
+import VueRouter from "vue-router";
+
+export default {
+  data() {
+    return {
+      tabs: [
+        { title: "Обо мне", href: "/" },
+        { title: "Отзывы", href: "/reviews" },
+        { title: "Работы", href: "/works" }
+      ]
+    };
+  }
+};
+</script>
 
 <style lang="pcss">
 @import url("../../../node_modules/normalize.css/normalize.css");

@@ -46,6 +46,7 @@
 import {mapActions, mapState} from "vuex";
 
 export default {
+  
   data() {
     return {
       photoRender: "",
@@ -85,6 +86,6 @@ export default {
     avatarPreview() {
       return `url(${this.renderedPhoto})`;
     }
-  },
+  }
 }
 </script>

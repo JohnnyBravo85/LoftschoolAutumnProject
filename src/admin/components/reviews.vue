@@ -4,12 +4,12 @@
       .reviews-section__main-block
         h2.reviews-section__title.admin-title Блок «Отзывы»
           reviewAdd(
-            v-if="addCategoryMode === true"
-            @cancelLoad="addCategoryMode = false"
+            v-if="addReviewMode === true"
+            @cancelLoad="addReviewMode = false"
           )
           reviewEdit(
-            v-if="editCategoryMode === true"
-            @cancelEditLoad="editCategoryMode = false"
+            v-if="editReviewMode === true"
+            @cancelEditLoad="editReviewMode = false"
           )
       ul.reviews-section__reviews-list
         li.reviews-section__review-item.reviews-section__review-item--add(
@@ -22,7 +22,7 @@
         )
           reviewItem(
             :review="review"
-            @editReview="editCategoryMode = true"
+            @editReview="editReviewMode = true"
           )
 </template>
 
@@ -40,18 +40,18 @@ export default {
   },
   data() {
     return {
-      addCategoryMode: false,
-      editCategoryMode: false,
+      addReviewMode: false,
+      editReviewMode: false,
       reviewEdit: {}
     }
   },
   methods: {
     ...mapActions('reviews', ['getReviews']),
     editCurrentReview(editReviewData) {
-      this.editCategoryMode = true;
+      this.editReviewMode = true;
     },
     confirmLoad() {
-      this.addCategoryMode = true;
+      this.addReviewMode = true;
     }
   },
   computed: {
@@ -65,8 +65,6 @@ export default {
     } catch (error) {
       console.log(error.message)
     }
-  },
-  mounted() {
   }
 }
 
