@@ -2,11 +2,12 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "./routes";
 import axios from "axios";
-import store from "../store"
+import store from "../store";
+import requests from "../requests";
 
 Vue.use(VueRouter);
 
-const baseURL = 'https://webdev-api.loftschool.com/'
+const baseURL = requests.defaults.baseURL;
 
 const guard = axios.create({
   baseURL
@@ -34,3 +35,5 @@ router.beforeEach(async (to, from, next) => {
       next();
   }
 })
+
+export default router;

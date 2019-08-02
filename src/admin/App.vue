@@ -1,15 +1,8 @@
 <template lang="pug">
   .wrapper-admin
-    .logincontent(
-      v-if="isLogin === true"
-      @click="a"
-    )
-      login(
-        :isLogin="isLogin"
-      )
-    .maincontent(
-      v-else
-    )
+    template(v-if="$route.meta.public")
+      router-view
+    .maincontent(v-else-if="userIsLogged")
       appHeader
       appNav
       router-view
@@ -17,7 +10,7 @@
 
 <script>
 
-import { eventBus } from './main.js';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'app',
@@ -29,21 +22,9 @@ export default {
     reviews: () => import('./components/reviews.vue'),
     login: () => import('./components/login.vue')
   },
-  data() {
-    return {
-      isLogin: false
-    }
-  },
-  methods: {
-    a() {
-      console.log(this.isLogin)
-    }
-  }, 
-  created() {
-    eventBus.$on('loginTrueMode', boolean => {
-      this.isLogin = boolean.flag
-    })
-  }
+  computed: {
+    ...mapGetters("user", ["userIsLogged"])
+ }
 }
 
 </script>

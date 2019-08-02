@@ -68,7 +68,6 @@ export default {
     try {
       await this.getSkills();
     } catch(error) {
-        console.log(error.message)
     }
   },
   mounted() {

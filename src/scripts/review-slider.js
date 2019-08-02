@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Flickity from 'vue-flickity';
+import axios from 'axios';
 
 const reviewsSliderContent = {
   template: '#reviews-slider-content',
@@ -18,6 +19,9 @@ new Vue({
   data() {
     return {
       reviews : [],
+      baseURL: "https://webdev-api.loftschool.com",
+      userID: 157,
+      currentSlideIndex: 0,
       flickityOptions: {
         initialIndex: 0,
         prevNextButtons: false,
@@ -25,9 +29,7 @@ new Vue({
         wrapAround: false,
         groupCells: true
         // any options from Flickity can be used
-      },
-      currentSlideIndex: 0,
-      reviewsLength: []
+      }
     }
   },
   watch: {
@@ -37,10 +39,10 @@ new Vue({
       const prev = this.$refs["prev"];
       const next = this.$refs["next"];
 
-      let max = this.reviewsLength;
+      let max = this.reviews.length;
 
       if(screen.width >= viewport) {
-        max = this.reviewsLength / 2;
+        max = this.reviews.length / 2;
       }
       
       if(this.currentSlideIndex === max) {
@@ -58,14 +60,19 @@ new Vue({
         }, animationTime);
         this.currentSlideIndex++;
       }
-
-      console.log(this.currentSlideIndex);
     }
   },
   methods: {
-    makeArrayWithRequireAvatar(data) {
+    // makeArrayWithRequireAvatar(data) {
+    //   return data.map(item => {
+    //     const requireAvatar = require(`../images/content/${item.avatar}`);
+    //     item.avatar = requireAvatar;
+    //     return item
+    //   });
+    // },
+     makeArrayWithRequireAvatar(data) {
       return data.map(item => {
-        const requireAvatar = require(`../images/content/${item.avatar}`);
+        const requireAvatar = `${this.baseURL}/${item.photo}`;
         item.avatar = requireAvatar;
         return item
       });
@@ -77,11 +84,15 @@ new Vue({
     previous() {
       this.$refs.flickity.previous();
       this.currentSlideIndex--;
-    }
+    },
+    async getReviews() {
+      await axios.get(`${this.baseURL}/reviews/${this.userID}`)
+        .then(response => this.reviews = this.makeArrayWithRequireAvatar(response.data))
+      },
   },
   created() {
-    const data = require("../data/review-slider.json");
-    this.reviews = this.makeArrayWithRequireAvatar(data);
-    this.reviewsLength = this.reviews.length;
+    // const data = require("../data/review-slider.json");
+    // this.reviews = this.makeArrayWithRequireAvatar(data);
+    this.getReviews();
   }
 })

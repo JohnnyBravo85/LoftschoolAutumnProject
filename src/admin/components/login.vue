@@ -2,7 +2,7 @@
   section.authorization.page-section
     form.authorization__block(@submit.prevent="login")
       .authorization__close-block
-        .authorization__close
+        a(href="/").authorization__close
       h2.authorization__title Авторизация
       .authorization__login-block
         label.authorization__login-label.authorization__label
@@ -43,16 +43,6 @@ export default {
       } catch(error) {
 
       }
-    },
-    loginModeTrue() {
-      eventBus.$emit('loginTrueMode', {
-        flag: true
-      });
-    },
-    loginModeFalse() {
-      eventBus.$emit('loginFalseMode', {
-        flag: false
-      });
     }
  }
 }

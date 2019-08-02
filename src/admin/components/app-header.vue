@@ -7,11 +7,30 @@
         .header-admin__owner-panel
           .header-admin__full-name Дмитрий Семёнов
           .header-admin__title Панель администрирования
-          router-link(
-              tag="button"
-              to="/login"
+          button(
+              type="button"
+              @click="userLogout"
               ).header-admin__logout Выйти
 </template>
+
+<script>
+
+import { mapActions } from 'vuex';
+
+export default {
+  methods: {
+    ...mapActions('user', ['logout']),
+    async userLogout() {
+      try {
+        await this.logout();
+      } catch(error) {
+        this.error.message
+      }
+    }
+  }
+}
+</script>
+
 
 <style lang="pcss">
 @import url("../../../node_modules/normalize.css/normalize.css");

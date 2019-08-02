@@ -17,13 +17,14 @@ import VueRouter from "vue-router";
 export default {
   data() {
     return {
+      // isUserLogged: this.$store.getters["user/userIsLogged"],
       tabs: [
         { title: "Обо мне", href: "/" },
         { title: "Отзывы", href: "/reviews" },
         { title: "Работы", href: "/works" }
       ]
     };
-  }
+  },
 };
 </script>
 
