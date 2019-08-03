@@ -15,7 +15,7 @@ const sliderTags = {
   },
   computed : {
     tagsArray () {
-      return this.currentWork.techs.split(',');
+      return this.currentWork.techs.split(',') || this.currentWork.techs.split(' ');
     }
   }
 }
@@ -124,7 +124,5 @@ new Vue ({
     // const data = require('../data/slider.json');
     // this.sliderWorksArray = this.makeArrayRequirePhoto(data);
     this.getWorks();
-    this.works = this.makeArrayRequirePhoto(this.works);
-    this.currentWork = this.works[this.currentWorkIndex]
   }
 })

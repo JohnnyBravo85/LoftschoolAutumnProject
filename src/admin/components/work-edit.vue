@@ -32,7 +32,7 @@
               v-model="currentWork.description"
             ).works-section__description-textarea
           label.works-section__tag-label.works-section__label
-            h3.works-section__tag-title.works-section__work-title Добавление тэга
+            h3.works-section__tag-title.works-section__work-title Редактирование тэгов через пробел
             input(
               placeholder="Jquery, Vue.js, HTML5"
               v-model="currentWork.techs"
