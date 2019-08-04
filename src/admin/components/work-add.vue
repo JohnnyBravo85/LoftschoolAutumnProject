@@ -32,21 +32,11 @@
               v-model="addWorkData.description"
               ).works-section__description-textarea
           label.works-section__tag-label.works-section__label
-            h3.works-section__tag-title.works-section__work-title Добавление тэгов через пробел
+            h3.works-section__tag-title.works-section__work-title Добавление тэгов через запятую
             input(
               placeholder="Jquery, Vue.js, HTML5"
               v-model="addWorkData.techs"
               ).works-section__tag-input.works-section__input
-          ul.works-section__tags-list
-            li.works-section__tags-item
-              p.works-section__tags-text HTML
-              button(type="button").works-section__tags-btn
-            li.works-section__tags-item
-              p.works-section__tags-text CSS
-              button(type="button").works-section__tags-btn
-            li.works-section__tags-item
-              p.works-section__tags-text Javascript
-              button(type="button").works-section__tags-btn
     .works-section__btn-block
       button(
         type="submit"
@@ -77,6 +67,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions('works', ['addWork']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     renderFile(event) {
       const file = event.target.files[0];
       this.addWorkData.photo = file;
@@ -87,10 +79,12 @@ export default {
           this.renderedPhoto = reader.result;
         }
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     },
-    ...mapActions('works', ['addWork']),
     async addNewWork() {
       try {
         var workFormData = new FormData();
@@ -102,7 +96,10 @@ export default {
         this.addWork(workFormData);
         this.$emit('cancelLoad');
         } catch (error) {
-          console.log(error.message)
+            this.showTooltipe({
+              active: true,
+              message: error.message
+            })
         }
     },
   },

@@ -15,7 +15,7 @@ const sliderTags = {
   },
   computed : {
     tagsArray () {
-      return this.currentWork.techs.split(',') || this.currentWork.techs.split(' ');
+      return this.currentWork.techs.split(',');
     }
   }
 }

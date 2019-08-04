@@ -47,6 +47,7 @@ export default {
   methods: {
     ...mapActions('categories', ['getCategories']),
     ...mapActions('skills', ['getSkills']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     filterSkillsByCategoryId(categoryId) {
       return this.skills.filter(skill => skill.category === categoryId)
     }
@@ -63,11 +64,18 @@ export default {
     try {
       await this.getCategories();
     } catch(error) {
-        console.log(error.message)
+      this.showTooltipe({
+        active: true,
+        message: error.message
+      })
     }
     try {
       await this.getSkills();
     } catch(error) {
+      this.showTooltipe({
+          active: true,
+          message: error.message
+      })
     }
   },
   mounted() {
@@ -173,6 +181,7 @@ export default {
 
 .about-section__skill-group {
   padding-bottom: 14px;
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -5,7 +5,9 @@
         placeholder="Название новой группы" 
         v-model="createCategory.title"
         :disabled="groupFormIsBlocked? true : false"
+        :class="{error:validation.hasError('createCategory.title')}"
       ).about-section__group-name-input.about-section__form-input.about-section__group-name-input-add
+      div.error(v-if="validation.hasError('createCategory.title')") {{ validation.firstError('createCategory.title') }}
       .about-section__confirm-del
         button(
           type="button" 
@@ -21,9 +23,15 @@
 
 import { mapActions } from 'vuex';
 import { eventBus } from '../main';
+import {Validator} from 'simple-vue-validator';
 
 export default {
-  
+  mixins:[require('simple-vue-validator').mixin],
+  validators:{
+    "createCategory.title": value =>{
+      return Validator.value(value).required('Пожалуйста заполните поле!')
+    }
+  },
   props: {
     categories: Array,
     category: Object,
@@ -35,10 +43,12 @@ export default {
         title: ''
       },
       groupFormIsBlocked: false,
+      isError: "true"
     }
   },
   methods: {
     ...mapActions('categories', ['addCategory']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     async addNewCategory() {
       this.groupFormIsBlocked = true;
       try {
@@ -46,7 +56,10 @@ export default {
         this.createCategory.title = "";
         this.editCardModeOFalse();
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       } finally {
         this.groupFormIsBlocked = false;
       }
@@ -56,6 +69,6 @@ export default {
         flag: false
       })
     }
-  }
+  },
 }
 </script>

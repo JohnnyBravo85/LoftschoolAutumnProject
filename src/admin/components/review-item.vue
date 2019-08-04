@@ -38,12 +38,27 @@ export default {
   methods: {
     ...mapActions('reviews', ['deleteReview']),
     ...mapMutations("reviews", ["SET_CURRENT_REVIEW"]),
+    ...mapActions('tooltipe', ['showTooltipe']),
     editReview() {
-      this.SET_CURRENT_REVIEW(this.review.id);
-      this.$emit("editReview");
+      try {
+        this.SET_CURRENT_REVIEW(this.review.id);
+        this.$emit("editReview");
+      } catch(error) {
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
+      }
     },
     deleteCurrentReview() {
-      this.deleteReview(this.review.id)
+      try {
+        this.deleteReview(this.review.id);
+      } catch(error) {
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
+      }
     }
   },
   computed: {

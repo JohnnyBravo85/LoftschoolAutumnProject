@@ -25,9 +25,9 @@ export default {
         const {data: category} = await this.$axios.post('/categories', newCategory);
         commit('ADD_CATEGORY', category)
       } catch(error) {
-        throw new Error(
-          error.responce.data.error || error.responce.data.message
-        )
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async removeCategory({commit}, categoryId) {
@@ -35,7 +35,9 @@ export default {
         const responce = await this.$axios.delete(`/categories/${categoryId}`);
         commit('DELETE_CATEGORY', categoryId);
       } catch(error) {
-        
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async editCategory({commit}, category) {
@@ -43,7 +45,9 @@ export default {
         const responce = await this.$axios.post(`/categories/${category.id}`, category);
         commit('EDIT_CATEGORY', category);
       } catch(error) {
-
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async getCategories({commit}) {
@@ -51,13 +55,10 @@ export default {
         const {data: categories} = await this.$axios.get('/categories/157');
         commit('SET_CATEGORIES', categories);
       } catch(error) {
-        throw new Error(
-          error.responce.data.error || error.responce.data.message
-        )
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
-  },
-  getters: {
-
   },
 }

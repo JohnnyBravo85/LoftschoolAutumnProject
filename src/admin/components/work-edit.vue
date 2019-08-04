@@ -32,21 +32,11 @@
               v-model="currentWork.description"
             ).works-section__description-textarea
           label.works-section__tag-label.works-section__label
-            h3.works-section__tag-title.works-section__work-title Редактирование тэгов через пробел
+            h3.works-section__tag-title.works-section__work-title Редактирование тэгов через запятую
             input(
               placeholder="Jquery, Vue.js, HTML5"
               v-model="currentWork.techs"
             ).works-section__tag-input.works-section__input
-          ul.works-section__tags-list
-            li.works-section__tags-item
-              p.works-section__tags-text HTML
-              button(type="button").works-section__tags-btn
-            li.works-section__tags-item
-              p.works-section__tags-text CSS
-              button(type="button").works-section__tags-btn
-            li.works-section__tags-item
-              p.works-section__tags-text Javascript
-              button(type="button").works-section__tags-btn
     .works-section__btn-block
       button(
         type="submit"
@@ -71,7 +61,9 @@ export default {
       editedWork: ""
     }
   },
-    methods: {
+  methods: {
+    ...mapActions('works', ['editWork']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     renderFile(event) {
       const file = event.target.files[0];
       this.photoRender = file;
@@ -80,19 +72,24 @@ export default {
       try {
         reader.readAsDataURL(file);
         reader.onloadend  = () => {
-          this.renderedPhoto = reader.result;
+        this.renderedPhoto = reader.result;
         }
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     },
-    ...mapActions('works', ['editWork']),
     async editCurrentWork() {
       try {
         this.editWork(this.currentWork)
         this.$emit('cancelEditLoad');
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     }
   },

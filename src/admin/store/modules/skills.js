@@ -25,9 +25,9 @@ export default {
         const {data: skill} = await this.$axios.post('/skills', newSkill);
         commit('ADD_SKILL', skill)
       } catch(error) {
-        throw new Error(
-          error.responce.data.error || error.responce.data.message
-        ) 
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async removeSkill({commit}, skillId) {
@@ -35,7 +35,9 @@ export default {
         const responce = await this.$axios.delete(`/skills/${skillId}`);
         commit('DELETE_SKILL', skillId);
       } catch(error) {
-        
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async editSkill({commit}, skill) {
@@ -43,7 +45,9 @@ export default {
         const responce = await this.$axios.post(`/skills/${skill.id}`, skill);
         commit('EDIT_SKILL', skill);
       } catch(error) {
-
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async getSkills({commit}) {
@@ -51,9 +55,9 @@ export default {
         const {data: skills} = await this.$axios.get('/skills/157');
         commit('SET_SKILLS', skills);
       } catch(error) {
-        throw new Error(
-          error.responce.data.error || error.responce.data.message
-        )
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     }
   }

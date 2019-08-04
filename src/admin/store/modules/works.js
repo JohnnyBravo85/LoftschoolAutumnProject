@@ -31,7 +31,9 @@ export default {
         const response = await this.$axios.post('/works', work);
         commit("ADD_WORK", response.data);
       } catch (error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async deleteWork({commit}, workId) {
@@ -39,7 +41,9 @@ export default {
         const response = await this.$axios.delete(`/works/${workId}`);
         commit("DELETE_WORK", workId);
       } catch(error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async editWork({commit}, editWork) {
@@ -53,7 +57,9 @@ export default {
         const response = await this.$axios.post(`/works/${editWork.id}`, data);
         commit("EDIT_WORK", response.data.work);
       } catch(error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async getWorks({commit}) {
@@ -61,7 +67,9 @@ export default {
         const response = await this.$axios.get('/works/157')
         commit("SET_WORKS", response.data)
       } catch (error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     }
   }

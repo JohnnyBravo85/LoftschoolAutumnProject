@@ -59,6 +59,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions('reviews', ['addReview']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     renderFile(event) {
       const file = event.target.files[0];
       this.addReviewData.photo = file;
@@ -69,10 +71,12 @@ export default {
           this.renderedPhoto = reader.result;
         }
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     },
-    ...mapActions('reviews', ['addReview']),
     async addNewReview() {
       try {
         var reviewFormData = new FormData();
@@ -83,8 +87,11 @@ export default {
         this.addReview(reviewFormData);
         this.$emit('cancelLoad');
         } catch (error) {
-          console.log(error.message)
-        }
+          this.showTooltipe({
+          active: true,
+          message: error.message
+        })
+      }
     },
   },
   computed: {

@@ -46,8 +46,16 @@ export default {
   },
   methods: {
     ...mapActions('works', ['getWorks']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     editCurrentWork(editWorkData) {
-      this.editWorkMode = true;
+      try {
+        this.editWorkMode = true;
+      } catch(error) {
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
+      }
     },
     confirmLoad() {
       this.addWorkMode = true;
@@ -55,14 +63,17 @@ export default {
   },
   computed: {
     ...mapState('works', {
-      works: state => state.works
+    works: state => state.works
     }),
   },
   async created() {
     try {
       this.getWorks();
     } catch (error) {
-      console.log(error.message)
+      this.showTooltipe({
+        active: true,
+        message: error.message
+      })
     }
   }
 }
@@ -200,6 +211,9 @@ export default {
 .works-section__label {
   margin-bottom: 30px;
   border-bottom: 1px solid #000;
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .works-section__work-title {
@@ -232,6 +246,9 @@ export default {
 
 .works-section__tags-list {
   display: flex;
+  position: absolute;
+  left: 5%;
+  bottom: 10%;
 }
 
 .works-section__tags-item {
@@ -343,11 +360,17 @@ export default {
   box-shadow: 4.1px 2.9px 20px 0 rgba(0, 0, 0, 0.07);
 }
 
+.works-section__work-img-block {
+  position: relative;
+}
+
 .works-section__work-img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
+
+
 
 .works-section__work-content-block {
   padding: 11.13% 9.45%;

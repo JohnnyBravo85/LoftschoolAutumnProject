@@ -47,8 +47,16 @@ export default {
   },
   methods: {
     ...mapActions('reviews', ['getReviews']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     editCurrentReview(editReviewData) {
-      this.editReviewMode = true;
+      try {
+        this.editReviewMode = true;
+      } catch(error) {
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
+      }
     },
     confirmLoad() {
       this.addReviewMode = true;
@@ -61,9 +69,12 @@ export default {
   },
   async created() {
     try {
-      this.getReviews();
+      await this.getReviews();
     } catch (error) {
-      console.log(error.message)
+      this.showTooltipe({
+        active: true,
+        message: error.message
+      })
     }
   }
 }

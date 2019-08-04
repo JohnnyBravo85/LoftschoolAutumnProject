@@ -54,7 +54,9 @@ export default {
       editedReview: ""
     }
   },
-    methods: {
+  methods: {
+    ...mapActions('reviews', ['editReview']),
+    ...mapActions('tooltipe', ['showTooltipe']),
     renderFile(event) {
       const file = event.target.files[0];
       this.photoRender = file;
@@ -66,16 +68,21 @@ export default {
           this.renderedPhoto = reader.result;
         }
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     },
-    ...mapActions('reviews', ['editReview']),
     async editCurrentReview() {
       try {
-        this.editReview(this.currentReview)
+        this.editReview(this.currentReview);
         this.$emit('cancelEditLoad');
       } catch (error) {
-        console.log(error.message)
+        this.showTooltipe({
+          active: true,
+          message: error.message
+        })
       }
     }
   },

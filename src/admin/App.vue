@@ -6,11 +6,12 @@
       appHeader
       appNav
       router-view
+      tooltipe
 </template>
 
 <script>
 
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions, mapState } from 'vuex';
 
 export default {
   name: 'app',
@@ -20,11 +21,29 @@ export default {
     about: () => import('./components/about.vue'),
     works: () => import('./components/works.vue'),
     reviews: () => import('./components/reviews.vue'),
-    login: () => import('./components/login.vue')
+    login: () => import('./components/login.vue'),
+    tooltipe: () => import('./components/tooltipe.vue')
   },
   computed: {
-    ...mapGetters("user", ["userIsLogged"])
- }
+    ...mapGetters("user", ["userIsLogged"]),
+    ...mapState("tooltipe", {
+      status: state => state.toolData.active
+    }),
+ },
+ methods:{
+    ...mapActions('tooltipe',['hideTooltipe']),
+  },
+  watch:{
+    status:function(){
+      if(this.status){
+        let timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+          this.hideTooltipe();
+        }, 3000);
+      }
+    }
+  }
 }
 
 </script>
@@ -33,6 +52,29 @@ export default {
 @import url("../../node_modules/normalize.css/normalize.css");
 @import url("../styles/mixins.pcss");
 @import url("../styles/layout/base.pcss");
+
+/* .error {
+  z-index: 100;
+  background: #cd1515;
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 14px;
+  white-space: nowrap;
+  &:before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-top: 0;
+    border-bottom-color: #cd1515;
+    border-bottom-width: 7px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+} */
 
 /* .page-section {
   padding: 5.25% 0;

@@ -87,6 +87,8 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['addSkill']),
+    ...mapActions('tooltipe', ['showTooltipe']),
+    ...mapActions('categories', ['removeCategory', 'editCategory', 'getCategories']),
     async addNewSkill() {
       this.skillFormIsBlocked = true;
       try {
@@ -94,17 +96,22 @@ export default {
         this.createSkill.title = "";
         this.createSkill.percent = "";
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+            active: true,
+            message: error.message
+          })
       } finally {
         this.skillFormIsBlocked = false;
       }
     },
-    ...mapActions('categories', ['removeCategory', 'editCategory', 'getCategories']),
     async removeThisCategory() {
       try {
         await this.removeCategory(this.category.id);
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+            active: true,
+            message: error.message
+          })
       }
     },
     async editThisCategory() {
@@ -114,7 +121,10 @@ export default {
         this.editedCategory.title = "";
         this.editCategoryModeOn = false;
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+            active: true,
+            message: error.message
+          })
       }
     }
   }

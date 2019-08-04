@@ -31,7 +31,9 @@ export default {
         const response = await this.$axios.post('/reviews', review);
         commit("ADD_REVIEW", response.data);
       } catch (error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async deleteReview({commit}, reviewId) {
@@ -39,7 +41,9 @@ export default {
         const response = await this.$axios.delete(`/reviews/${reviewId}`);
         commit("DELETE_REVIEW", reviewId);
       } catch(error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async editReview({commit}, editReview) {
@@ -52,7 +56,9 @@ export default {
         const response = await this.$axios.post(`/reviews/${editReview.id}`, data);
         commit("EDIT_REVIEW", response.data.review);
       } catch(error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     },
     async getReviews({commit}) {
@@ -60,7 +66,9 @@ export default {
         const response = await this.$axios.get('/reviews/157')
         commit("SET_REVIEWS", response.data)
       } catch (error) {
-        error.response.data.error || error.response.data.message
+          throw new Error(
+            error.responce.data.error || error.responce.data.message
+          )
       }
     }
   }

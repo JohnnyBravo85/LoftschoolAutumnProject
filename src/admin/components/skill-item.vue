@@ -53,11 +53,15 @@ export default {
   },
   methods: {
     ...mapActions('skills', ['removeSkill', 'editSkill', 'getSkills']),
+     ...mapActions('tooltipe', ['showTooltipe']),
     async removeThisSkill() {
       try {
         await this.removeSkill(this.skill.id);
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+            active: true,
+            message: error.message
+          });
       }
     },
     async editThisSkill() {
@@ -68,7 +72,10 @@ export default {
         this.editedSkill.percent = '';
         this.editSkillModeOn = false;
       } catch(error) {
-          console.log(error.message)
+          this.showTooltipe({
+            active: true,
+            message: error.message
+          })
       }
     }
   }
