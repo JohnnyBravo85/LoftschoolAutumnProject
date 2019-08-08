@@ -5,7 +5,7 @@
       ul.works-section__tags-list
             li.works-section__tags-item(v-for="tag in tagsArray")
               p.works-section__tags-text {{tag}}
-              button(type="button").works-section__tags-btn
+              //- button(type="button").works-section__tags-btn
     .works-section__work-content-block
       h3.works-section__work-content-title.edit-title {{work.title}}
       p.works-section__work-content-text {{work.description}}

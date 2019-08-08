@@ -261,7 +261,7 @@ export default {
 }
 
 .works-section__tags-text {
-  margin-right: 9px;
+  /* margin-right: 9px; */
   font-size: 13px;
   font-weight: 600;
   opacity: 0.7;
