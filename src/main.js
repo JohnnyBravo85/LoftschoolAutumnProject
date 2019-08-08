@@ -8,6 +8,7 @@ import "./scripts/burger-menu";
 import "./scripts/review-slider";
 import "./scripts/skills";
 import "./scripts/slider";
+import "./scripts/link-connect"
 
 import Validate from "./scripts/validate-form.js";
 
