@@ -6,6 +6,7 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(href="https://fonts.googleapis.com/css?family=Marck+Script|Pacifico&display=swap" rel="stylesheet")
     title Portfolio | Main page
     
   body
@@ -15,4 +16,9 @@ html(lang="ru")
       include ./components/slider-block
       include ./components/form-reviews-block
       include ./components/footer
+    script(type="text/x-template")#form-popup
+      .popup__overlay
+        .popup__container
+          .popup__content
+          button.popup__btn-close.btn-gradient Закрыть
     include ./templates/entry

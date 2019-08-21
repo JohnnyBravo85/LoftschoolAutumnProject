@@ -1,34 +1,34 @@
 script(type="text/x-template")#slider
-  .slider
+  .slider#projects(v-if="works.length > 0")
     sliderDisplay(
-      :sliderWorksObject="sliderWorksObject"
-      :sliderWorksArray="sliderWorksArray"
+      :currentWork="currentWork"
+      :works="works"
       :currentWorkIndex="currentWorkIndex"
       @slide="slideWorks"
       @click="clickAtWork"
       )
     sliderDesck(
-      :sliderWorksObject="sliderWorksObject"
+      :currentWork="currentWork"
     )
 
 script(type="text/x-template")#slider-display
   .slider__display(:data-slide="currentWorkIndex+1")
     sliderContent(
-      :sliderWorksObject="sliderWorksObject"
+      :currentWork="currentWork"
       )
     sliderControls(
       @slide="direction => $emit('slide', direction)"
     )
     sliderPreviews(
-      :sliderWorksArray="sliderWorksArray"
-      :sliderWorksObject="sliderWorksObject"
+      :works="works"
+      :currentWork="currentWork"
       @click="workIndex => $emit('click', workIndex)"
       )
 
 script(type="text/x-template")#slider-content
   .slider__content
     .slider__pic
-      img(:src="sliderWorksObject.photo" alt="фотография работы")
+      img(:src="currentWork.photo" class="slider__img" alt="фотография работы")
       
 script(type="text/x-template")#slider-controls
   .slider__control
@@ -41,8 +41,8 @@ script(type="text/x-template")#slider-previews
   .slider__previews
     ul.slider__previews-list
       li(
-        v-for="(sliderWork, workIndex) in sliderWorksArray" 
-        :class="{sliderPreviewsItemActive : sliderWork.id===sliderWorksObject.id}"
+        v-for="(sliderWork, workIndex) in works" 
+        :class="{sliderPreviewsItemActive : sliderWork.id===currentWork.id}"
         @click="$emit('click', workIndex)"
         ).slider__previews-item
         button(type="button").slider__previews-button
@@ -51,10 +51,10 @@ script(type="text/x-template")#slider-previews
 script(type="text/x-template")#slider-desck
   .slider__desck
     sliderTags(
-      :sliderWorksObject="sliderWorksObject"
+      :currentWork="currentWork"
     )
     sliderText(
-      :sliderWorksObject="sliderWorksObject"
+      :currentWork="currentWork"
     )
 
 script(type="text/x-template")#slider-tags
@@ -63,9 +63,9 @@ script(type="text/x-template")#slider-tags
 
 script(type="text/x-template")#slider-text
   .slider__text-outer
-    h3.slider__title {{sliderWorksObject.title}}
+    h3.slider__title {{currentWork.title}}
     .slider__text
-      p {{sliderWorksObject.desck}}
-    a(:href="sliderWorksObject.link").slider__link
+      p {{currentWork.description}}
+    a(:href="currentWork.link").slider__link
       +icon("link", "slider___link-icon")
       span.slider__link-text Посмотреть сайт

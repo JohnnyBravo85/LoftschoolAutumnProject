@@ -17,17 +17,23 @@
 
 .form__row {
   display: flex;
-  margin-bottom: 41px;
+  margin-bottom: 2.77%;
   &:nth-last-of-type(1) {
-    margin-bottom: 60px;
+    margin-bottom: 4.05%;
+
+    @include phones {
+      margin-bottom: 10%;
+    }
   }
 
   @include phones {
     flex-direction: column;
+    margin-bottom: 10%;
   }
 }
 
 .form__label {
+  position: relative;
   &:hover {
     border-color: $hover-color;
   }
@@ -45,7 +51,7 @@
 }
 
 .form__label-name {
-  margin-right: 51px;
+  margin-right: 3.44%;
 
   @include phones {
     margin-right: 0;
@@ -123,4 +129,20 @@
   @include phones {
     height: 150px;
   }
+}
+
+.js-validate-error {
+  display: none;
+}
+
+.has-error {
+  position: absolute;
+  display: block;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: 20px;
+  background: rgba(135, 206, 235, .95);
+  font-family: 'Marck Script', 'Pacifico', cursive;
 }

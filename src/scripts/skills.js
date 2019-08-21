@@ -1,17 +1,17 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 const skillName = {
   template: '#skillName',
   props: {
-    skillName : String,
-    skillPersent : Number
+    skill : Object
   },
   methods: {
     skillPersentScale() {
       const circle = this.$refs['circle'];
       let findBlcTop = this.findCircle();
       const dashArray = parseInt(getComputedStyle(circle).getPropertyValue("stroke-dasharray"));
-      const persent = (dashArray/100) * (100 - this.skillPersent);
+      const persent = (dashArray/100) * (100 - this.skill.percent);
 
       window.addEventListener('scroll', function(){
         const posTop = findBlcTop.findTop.getBoundingClientRect().top;
@@ -39,7 +39,8 @@ const groupSkillName = {
     skillName
   },
   props: {
-    skill : Object
+    skills : Array,
+    category: Object
   }
 }
 
@@ -51,11 +52,29 @@ new Vue({
   },
   data() {
     return {
-      skills : []
+      skills : [],
+      categories: [],
+      baseURL: "https://webdev-api.loftschool.com",
+      userID: 157
+    }
+  },
+  methods: {
+   async getCategories() {
+    await axios.get(`${this.baseURL}/categories/${this.userID}`)
+      .then(response => this.categories = response.data);
+    },
+    async getSkills() {
+      await axios.get(`${this.baseURL}/skills/${this.userID}`)
+        .then(response => this.skills = response.data);
+    },
+    filterSkillsByCategoryId(categoryId) {
+      return this.skills.filter(skill => skill.category === categoryId)
     }
   },
   created () {
-    const data = require('../data/skills.json');
-    this.skills = data;
+    // const data = require('../data/skills.json');
+    // this.skills = data;
+    this.getCategories();
+    this.getSkills();
   }
 });

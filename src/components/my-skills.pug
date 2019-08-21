@@ -1,21 +1,23 @@
 script(type="text/x-template")#skills-list
   ul.my-skills
-    li.my-skills__group-item(v-for="skill in skills")
+    li.my-skills__group-item(v-for="category in categories")
       groupSkillName(
-        :skill="skill"
+        :category="category"
+        :skills = "filterSkillsByCategoryId(category.id)"
         )
 
 script(type="text/x-template")#groupSkillName
   .my-skills__skills-group
-    h4.my-skills__title {{skill.skillsGroup}}
+    h4.my-skills__title {{category.category}}
     ul.my-skills__list
-      li.my-skills__item(v-for="(skillPersent, skillName) in skill.skills")
-        skillName(:skillName="skillName", 
-                  :skillPersent="skillPersent")
+      li.my-skills__item(v-for="skill in skills")
+        skillName(
+          :skill="skill"
+        )
 
 script(type="text/x-template")#skillName
   .my-skills__skill(ref="skills-block")
-    div.my-skills__list-title {{skillName}}
+    div.my-skills__list-title {{skill.title}}
     svg(class="persentage" viewBox="0 0 100 100" preserveAspectRatio="none")
       defs
         lineargradient#gradient(x1="0%" y1="0%" x2="100%" y2="0%")

@@ -1,20 +1,21 @@
 import Vue from 'vue';
+import axios from 'axios';
 
 const sliderText = {
   template: '#slider-text',
   props: {
-    sliderWorksObject: Object
+    currentWork: Object
   }
 }
 
 const sliderTags = {
   template: '#slider-tags',
   props: {
-    sliderWorksObject: Object
+    currentWork: Object
   },
   computed : {
     tagsArray () {
-      return this.sliderWorksObject.tags.split(',');
+      return this.currentWork.techs.split(',');
     }
   }
 }
@@ -26,15 +27,15 @@ const sliderDesck = {
     sliderText
   },
   props: {
-    sliderWorksObject: Object
+    currentWork: Object
   }
 }
 
 const sliderPreviews = {
   template: '#slider-previews',
   props: {
-    sliderWorksArray: Array,
-    sliderWorksObject: Object
+    works: Array,
+    currentWork: Object
   }
 }
 
@@ -45,7 +46,7 @@ const sliderControls = {
 const sliderContent = {
   template: '#slider-content',
   props: {
-    sliderWorksObject: Object
+    currentWork: Object
   }
 }
 
@@ -57,8 +58,8 @@ const sliderDisplay = {
     sliderPreviews
   },
   props: {
-    sliderWorksArray: Array,
-    sliderWorksObject: Object,
+    works: Array,
+    currentWork: Object,
     currentWorkIndex: Number
   }
 }
@@ -72,42 +73,56 @@ new Vue ({
   },
   data () {
     return {
-      sliderWorksArray: [],
+      works: [],
+      baseURL: "https://webdev-api.loftschool.com",
+      userID: 157,
       currentWorkIndex: 0
     }
   },
   computed: {
-    sliderWorksObject() {
-      return this.sliderWorksArray[this.currentWorkIndex]
-    }
+    currentWork() {
+      return this.works[this.currentWorkIndex]
+    },
   },
   watch: {
     currentWorkIndex(value) {
+      if(value === this.works.length) {
+        this.currentWorkIndex = 0;
+      }
 
+      if(value === -1) {
+        this.currentWorkIndex = this.works.length - 1;
+      }
     }
   },
   methods: {
     makeArrayRequirePhoto(data) {
-      return data.map(function(item) {
-        const requirePhoto = require(`../images/content/${item.photo}`);
+      return data.map(item => {
+        const requirePhoto = `${this.baseURL}/${item.photo}`;
         item.photo = requirePhoto;
         return item
       });
     },
     slideWorks(direction) {
-      if(direction === 'next' && this.currentWorkIndex < this.sliderWorksArray.length - 1) {
+      if(direction === 'next') {
         this.currentWorkIndex++
       }
-      if(direction === 'prev' && this.currentWorkIndex > 0) {
+      if(direction === 'prev') {
         this.currentWorkIndex--
       }
     },
     clickAtWork(workIndex) {
       this.currentWorkIndex = workIndex;
+    },
+    async getWorks() {
+      await axios.get(`${this.baseURL}/works/${this.userID}`)
+        .then(response => this.works = this.makeArrayRequirePhoto(response.data))
+      console.log(this.works);
     }
   },
   created() {
-    const data = require('../data/slider.json');
-    this.sliderWorksArray = this.makeArrayRequirePhoto(data);
+    // const data = require('../data/slider.json');
+    // this.sliderWorksArray = this.makeArrayRequirePhoto(data);
+    this.getWorks();
   }
 })

@@ -7,4 +7,16 @@ import "./scripts/paralax";
 import "./scripts/burger-menu";
 import "./scripts/review-slider";
 import "./scripts/skills";
-import "./scripts/slider"
+import "./scripts/slider";
+import "./scripts/link-connect"
+
+import Validate from "./scripts/validate-form.js";
+
+const form = document.querySelector('.js-form');
+
+if(form) {
+  const validate = new Validate({
+    element: 'j-form'
+  });
+  validate.init();
+}
