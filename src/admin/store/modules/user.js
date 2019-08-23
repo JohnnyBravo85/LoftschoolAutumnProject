@@ -21,7 +21,7 @@ export default {
     logout({ commit }) {
       commit("CLEAR_USER");
       localStorage.removeItem("token");
-      location.href = "admin#/login"
+      location.href = "/login"
       
     }
   }
