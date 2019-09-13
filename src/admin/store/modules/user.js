@@ -21,7 +21,7 @@ export default {
     logout({ commit }) {
       commit("CLEAR_USER");
       localStorage.removeItem("token");
-      location.href = "/login"
+      location.href = "https://johnnybravo85.github.io/LoftschoolAutumnProject/"
       
     }
   }
