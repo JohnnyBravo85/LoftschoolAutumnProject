@@ -7,8 +7,8 @@
         .header-admin__owner-panel
           .header-admin__full-name Дмитрий Семёнов
           .header-admin__title Панель администрирования
-          button(
-              type="button"
+          a(
+              href="https://johnnybravo85.github.io/LoftschoolAutumnProject/admin/#/login"
               @click="userLogout"
               ).header-admin__logout Выйти
 </template>
